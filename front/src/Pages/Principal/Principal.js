@@ -78,7 +78,6 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
               alt="Logo pokebola"
             />
             <h1>Pokédex</h1>
-            <p>Hola</p>
           </div>
           {order ? (
             <div style={{ display: "flex" }}>
