@@ -77,7 +77,7 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
               className="logo"
               alt="Logo pokebola"
             />
-            <h1>Pokédex</h1>
+            <h1>Brudex</h1>
           </div>
           {order ? (
             <div style={{ display: "flex" }}>
