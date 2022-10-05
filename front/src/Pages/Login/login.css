@@ -1,7 +1,7 @@
-body {
+.container-login {
     margin: 0;
     padding: 0;
-    background: url(/front/public/Images/pokemonFondo.png) no-repeat center top;
+    background: url(../../../public/Images/pokemonFondo.png) no-repeat center top;
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
@@ -18,6 +18,7 @@ body {
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
+    z-index: 3;
 }
 
 .login-box .avatar {
@@ -26,7 +27,7 @@ body {
     border-radius: 50%;
     position: absolute;
     top: -50px;
-    left: calc(50%-50px);
+    left: calc(50% - 50px);
 }
 
 .login-box h1 {
@@ -57,6 +58,16 @@ body {
     height: 40px;
     color: #fff;
     font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: #b80f22;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
 }
 
 

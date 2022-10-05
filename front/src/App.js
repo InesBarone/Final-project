@@ -4,6 +4,7 @@ import Principal from "./Pages/Principal/Principal";
 import Pokebio from "./Pages/Pokebio/Pokebio";
 import { Pokeinfo } from "./Components/Pokeinfo/Pokeinfo";
 import { useState } from "react";
+import Login from "./Pages/Login/login";
 
 function App() {
   const [pokeinfo, setPokeinfo] = useState(
@@ -17,9 +18,10 @@ function App() {
           <Route
             path="/"
             element={
-              <Principal pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />
+              <Login/>
             }
           />
+          <Route path="/principal" element={<Principal/>}></Route>
           <Route
             path="/pokemon/:name"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
