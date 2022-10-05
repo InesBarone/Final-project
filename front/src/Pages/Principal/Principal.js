@@ -60,7 +60,7 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
       let array = [...previousState];
       return array.reverse();
     });
-    if (imgArrow == arrows[0]) {
+    if (imgArrow === arrows[0]) {
       setImgArrow(arrows[1]);
     } else {
       setImgArrow(arrows[0]);
