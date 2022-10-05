@@ -119,4 +119,5 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
 //git checkout -b nombreDeBranch ---> crear una branch
 
 //git fetch ---> actualizar todas las branches
+//git pull
 // git checkout nombreDeBranch ---> entrar a la branch
