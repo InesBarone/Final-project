@@ -15,13 +15,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Login/>
-            }
-          />
-          <Route path="/principal" element={<Principal/>}></Route>
+          <Route path="/" element={<Login />} />
+          <Route path="/principal" element={<Principal />}></Route>
           <Route
             path="/pokemon/:name"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}

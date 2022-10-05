@@ -35,7 +35,7 @@ exports.onePokemon = function (req, res, next) {
     .from("pokemones")
     .where("name", "=", name)
     .then((response) => {
-      res.status(200).json(response);
+      res.status(200).json(response[0]);
       next();
     })
     .catch((err) => {
