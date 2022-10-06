@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
      fetch('http://localhost:3003/pokemones', {
-    method: 'GET',
+    method: 'GET'
   })    
   .then(function (response) {
     return response.json();
@@ -23,13 +23,14 @@ function App() {
   })
   .catch((err) => console.log(err));
 },  [i]);
+console.log(pokeinfo)
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/principal" element={<Principal />}></Route>
+          <Route path="/principal" element={<Principal pokeinfo={pokeinfo}/>}></Route>
           <Route
             path="/pokemon/:name"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
