@@ -3,13 +3,26 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Principal from "./Pages/Principal/Principal";
 import Pokebio from "./Pages/Pokebio/Pokebio";
 import { Pokeinfo } from "./Components/Pokeinfo/Pokeinfo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Login from "./Pages/Login/login";
 
 function App() {
-  const [pokeinfo, setPokeinfo] = useState(
-    Pokeinfo.sort((a, b) => a.number - b.number)
-  );
+  const [pokeinfo, setPokeinfo] = useState([]);
+  const [i, setI] = useState(0);
+
+
+  useEffect(() => {
+     fetch('http://localhost:3003/pokemones', {
+    method: 'GET',
+  })    
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (responseJSON) {
+    setPokeinfo(responseJSON);
+  })
+  .catch((err) => console.log(err));
+},  [i]);
 
   return (
     <div className="App">
