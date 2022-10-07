@@ -2,6 +2,8 @@ import React from "react";
 import { Pokeinfo } from "../Pokeinfo/Pokeinfo";
 import "./Pokecard.css";
 import { Link } from "react-router-dom";
+import Pokecreation from "../PokeCreation/pokecreation";
+
 
 export default function Pokecard({ text, pokeinfo }) {
   let string = text;
@@ -12,6 +14,7 @@ export default function Pokecard({ text, pokeinfo }) {
 
   return (
     <div className="pokecard-container">
+      <Pokecreation/>
       {filtered.map((pokemon) => {
         return (
           <div className="card" key={pokemon.name}>

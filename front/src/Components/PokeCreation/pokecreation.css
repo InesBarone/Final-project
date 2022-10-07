@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins&display=swap');
+
+.pokecreation-container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1em;
+    width:150px;
+    height: 300px;
+    gap:1em;
+}
+
+.card {
+    width: 30%;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.id-card {
+    font-size:10px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+    text-decoration: none;
+}
+
+.img-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-card {
+    width:85%;
+    padding: 0 5px;
+}
+
+.name-card{
+    color:white;
+    text-align: center;
+    font-size:12px;
+    width:100%;
+    border-radius: 0 0 10px 10px;
+}
+
+a {
+    text-decoration: none;
+}
