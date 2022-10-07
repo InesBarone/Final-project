@@ -33,15 +33,15 @@
   "satk": "090",
   "sdef": "080",
   "spd": "070",
-  "type_1": {
-    "name": "Bug",
-    "color": "#A7B723"
-  },
-  "type_2": {
-    "name": "Flying",
-    "color": "#A891EC"
-  },
-  "moves": "Compound-Eyes, Tinted-Lens"
+  "type_1": 1,
+  "type_2": 2,
+  "moves": "Compound-Eyes, Tinted-Lens",
+  "id_type_1": 1,
+  "type_name_1": "Grass",
+  "type_colour_1": "#74CB48",
+  "id_type_2": 2,
+  "type_name_2": "Poison",
+  "type_colour_2": "#A43E9E"
 }
 ```
 
@@ -94,15 +94,15 @@ Status: **200 OK**
     "satk": "090",
     "sdef": "080",
     "spd": "070",
-    "type_1": {
-      "name": "Bug",
-      "color": "#A7B723"
-    },
-    "type_2": {
-      "name": "Flying",
-      "color": "#A891EC"
-    },
-    "moves": "Compound-Eyes, Tinted-Lens"
+    "type_1": 1,
+    "type_2": 2,
+    "moves": "Compound-Eyes, Tinted-Lens",
+    "id_type_1": 1,
+    "type_name_1": "Grass",
+    "type_colour_1": "#74CB48",
+    "id_type_2": 2,
+    "type_name_2": "Poison",
+    "type_colour_2": "#A43E9E"
   }
 ]
 ```
@@ -130,15 +130,15 @@ Status: **200 OK**
   "satk": "090",
   "sdef": "080",
   "spd": "070",
-  "type_1": {
-    "name": "Bug",
-    "color": "#A7B723"
-  },
-  "type_2": {
-    "name": "Flying",
-    "color": "#A891EC"
-  },
-  "moves": "Compound-Eyes, Tinted-Lens"
+  "type_1": 1,
+  "type_2": 2,
+  "moves": "Compound-Eyes, Tinted-Lens",
+  "id_type_1": 1,
+  "type_name_1": "Grass",
+  "type_colour_1": "#74CB48",
+  "id_type_2": 2,
+  "type_name_2": "Poison",
+  "type_colour_2": "#A43E9E"
 }
 ```
 
@@ -161,15 +161,15 @@ Status: **200 OK**
   "satk": "090",
   "sdef": "080",
   "spd": "070",
-  "type_1": {
-    "name": "Bug",
-    "color": "#A7B723"
-  },
-  "type_2": {
-    "name": "Flying",
-    "color": "#A891EC"
-  },
-  "moves": "Compound-Eyes, Tinted-Lens"
+  "type_1": 1,
+  "type_2": 2,
+  "moves": "Compound-Eyes, Tinted-Lens",
+  "id_type_1": 1,
+  "type_name_1": "Grass",
+  "type_colour_1": "#74CB48",
+  "id_type_2": 2,
+  "type_name_2": "Poison",
+  "type_colour_2": "#A43E9E"
 }
 ```
 
@@ -195,15 +195,15 @@ Status:
   "satk": "090",
   "sdef": "080",
   "spd": "070",
-  "type_1": {
-    "name": "Bug",
-    "color": "#A7B723"
-  },
-  "type_2": {
-    "name": "Flying",
-    "color": "#A891EC"
-  },
-  "moves": "Compound-Eyes, Tinted-Lens"
+  "type_1": 1,
+  "type_2": 2,
+  "moves": "Compound-Eyes, Tinted-Lens",
+  "id_type_1": 1,
+  "type_name_1": "Grass",
+  "type_colour_1": "#74CB48",
+  "id_type_2": 2,
+  "type_name_2": "Poison",
+  "type_colour_2": "#A43E9E"
 }
 ```
 
@@ -230,15 +230,15 @@ Status: **200 OK**
   "satk": "090",
   "sdef": "080",
   "spd": "070",
-  "type_1": {
-    "name": "Bug",
-    "color": "#A7B723"
-  },
-  "type_2": {
-    "name": "Flying",
-    "color": "#A891EC"
-  },
-  "moves": "Compound-Eyes, Tinted-Lens"
+  "type_1": 1,
+  "type_2": 2,
+  "moves": "Compound-Eyes, Tinted-Lens",
+  "id_type_1": 1,
+  "type_name_1": "Grass",
+  "type_colour_1": "#74CB48",
+  "id_type_2": 2,
+  "type_name_2": "Poison",
+  "type_colour_2": "#A43E9E"
 }
 ```
 
@@ -266,14 +266,14 @@ Status: **200 OK**
   "satk": "090",
   "sdef": "080",
   "spd": "070",
-  "type_1": {
-    "name": "Bug",
-    "color": "#A7B723"
-  },
-  "type_2": {
-    "name": "Flying",
-    "color": "#A891EC"
-  },
-  "moves": "Compound-Eyes, Tinted-Lens"
+  "type_1": 1,
+  "type_2": 2,
+  "moves": "Compound-Eyes, Tinted-Lens",
+  "id_type_1": 1,
+  "type_name_1": "Grass",
+  "type_colour_1": "#74CB48",
+  "id_type_2": 2,
+  "type_name_2": "Poison",
+  "type_colour_2": "#A43E9E"
 }
 ```

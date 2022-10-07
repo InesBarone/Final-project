@@ -9,17 +9,18 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "Admin1234",
-    database: "pokemones",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 
 exports.allPokemones = function (req, res, next) {
   knex
-    .select("*")
-    .from("pokemones")
+    .raw(
+      "select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 ;"
+    )
     .then((resultado) => {
-      res.status(200).json(resultado);
+      res.status(200).json(resultado.rows);
       next();
     })
     .catch((err) => {
@@ -30,15 +31,17 @@ exports.allPokemones = function (req, res, next) {
 exports.onePokemon = function (req, res, next) {
   const name = req.params.name;
   knex
-    .select("*")
-    .from("pokemones")
-    .where("name", "=", name)
-    .then((response) => {
-      res.status(200).json(response[0]);
+    .raw(
+      "select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 where '" +
+        name +
+        "' = p.name ;"
+    )
+    .then((resultado) => {
+      res.status(200).json(resultado.rows);
       next();
     })
     .catch((err) => {
-      next();
+      console.log(err);
     });
 };
 
