@@ -19,8 +19,9 @@ app.get("/ping", (req, res) => {
 });
 
 app.get("/pokemones", pokemones.allPokemones);
-app.get("/pokemones/:name", pokemones.onePokemon);
+app.get("/pokemones/:id", pokemones.onePokemon);
 app.post("/pokemones", pokemones.createPokemon);
+app.get("/pokemones/share/:id", pokemones.sharePokemon);
 
 app.listen(3003, () => {
   console.log("Escuchando puerto 3003");
