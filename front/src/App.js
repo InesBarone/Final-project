@@ -29,7 +29,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route 
+          path="/" 
+          element={<Login />} />
           <Route
             path="/principal"
             element={<Principal pokeinfo={pokeinfo} />}
@@ -38,7 +40,13 @@ function App() {
             path="/pokemon/:name"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
           />
+<<<<<<< HEAD
+          <Route 
+          path="/formulario" 
+          element={<Formulario />}></Route>
+=======
           <Route path="/formulario" element={<Formulario />} ></Route>
+>>>>>>> 717cd5cd867f4ba568e3a200705f2077cedfddfb
         </Routes>
       </BrowserRouter>
     </div>
