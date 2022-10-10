@@ -22,18 +22,18 @@ export default function Pokecard({ text, pokeinfo }) {
               <div
                 className="id-card"
                 style={{
-                  border: `1px solid ${pokemon.primaryColor}`,
+                  border: `1px solid ${pokemon.type_colour_1}`,
                   borderBottom: "none",
                   borderRadius: "10px 10px 0 0",
                 }}
               >
-                {pokemon.id}
+                {pokemon.pokemon_id}
               </div>
               <div
                 className="img-card-container"
                 style={{
-                  borderLeft: `1px solid ${pokemon.primaryColor}`,
-                  borderRight: `1px solid ${pokemon.primaryColor}`,
+                  borderLeft: `1px solid ${pokemon.type_colour_1}`,
+                  borderRight: `1px solid ${pokemon.type_colour_1}`,
                 }}
               >
                 <img
@@ -44,7 +44,7 @@ export default function Pokecard({ text, pokeinfo }) {
               </div>
               <div
                 className="name-card"
-                style={{ backgroundColor: `${pokemon.primaryColor}` }}
+                style={{ backgroundColor: `${pokemon.type_colour_1}` }}
               >
                 {pokemon.name}
               </div>

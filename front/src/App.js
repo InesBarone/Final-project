@@ -38,7 +38,7 @@ function App() {
             path="/pokemon/:name"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
           />
-          <Route path="/formulario" element={<Formulario />}></Route>
+          <Route path="/formulario" element={<Formulario />} ></Route>
         </Routes>
       </BrowserRouter>
     </div>
