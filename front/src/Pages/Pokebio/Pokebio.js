@@ -6,19 +6,14 @@ import "./Pokebio.css";
 
 export default function Pokebio({ pokeinfo, setPokeinfo }) {
   const params = useParams;
-
   const PokeName = params().name;
-
   const info = pokeinfo.filter((pokemon) => pokemon.name === PokeName);
-
   const background = {
     backgroundColor: `${info[0].primaryColor}`,
   };
-
   const aboutColor = {
     color: `${info[0].primaryColor}`,
   };
-
   let index = pokeinfo.indexOf(info[0]);
   const changePokemonLeft = () => {
     if (index === 0) {
@@ -27,7 +22,6 @@ export default function Pokebio({ pokeinfo, setPokeinfo }) {
       return `${pokeinfo[index - 1].name}`;
     }
   };
-
   const changePokemonRight = () => {
     if (index === pokeinfo.length - 1) {
       return `${pokeinfo[0].name}`;
@@ -35,7 +29,6 @@ export default function Pokebio({ pokeinfo, setPokeinfo }) {
       return `${pokeinfo[index + 1].name}`;
     }
   };
-
   return (
     <div>
       <div className="Pokebio-container" style={background}>
