@@ -7,7 +7,7 @@ function Login() {
 <div className="container-login"> 
     <div className="login-box">
         <img className="avatar" src="/Images/ball.png" alt="pokeball"/>
-        <h1>Login here</h1>
+        <h1>LOGIN</h1>
         <form>
             <label for="email">Mail</label>
             <input type="email" placeholder="Enter e-mail"></input>
