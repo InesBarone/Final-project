@@ -48,6 +48,7 @@ router.post("/login", (req, res, next) => {
     .then((filas) => {
       if (filas.length === 1) {
         if (bcrypt.compareSync(req.body.password, filas[0].password)) {
+          console.log("logueado");
           res.status(200).json({
             id: filas[0].users_id,
             success: true,

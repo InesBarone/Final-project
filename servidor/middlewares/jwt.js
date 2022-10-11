@@ -17,10 +17,9 @@ exports.validateJWT = (req, res, next) => {
     var tokenfecha = new Date(tiempo * 1000);
     var dif = (ahora.getTime() - tokenfecha.getTime()) / 1000;
 
-    if (dif > 30) {
-      return res.status(401).json({ msg: "token expirado" });
+    if (dif > 3000) {
+      res.status(401).json({ msg: "token expirado" });
     }
-    return res.status(200).json({ msg: "logueado" });
   });
   next();
 };
