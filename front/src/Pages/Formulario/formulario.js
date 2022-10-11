@@ -51,10 +51,19 @@ export default function Formulario() {
             <input type="text" className="formulario__input"/>
             <label for="" 
             className="formulario__label">SPD</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Pokemon type</label>
-            <input type="submit" className="formulario__submit"/>
+            <form className="type_form">
+                Pokemon type
+                <select>
+                    <option disabled>Select Pokemon type</option>
+                    <option>Poison</option>
+                    <option>Electric</option>
+                    <option>Fire</option>
+                    <option>Water</option>
+                    <option>Flying</option>
+                    <option>Ghost</option>
+                </select>
+            </form>
+            <input type="button" value="Send" className="formulario__submit"></input>
         </form>
     </div>
     );
