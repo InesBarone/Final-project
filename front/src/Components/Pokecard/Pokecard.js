@@ -18,7 +18,7 @@ export default function Pokecard({ text, pokeinfo }) {
       {filtered.map((pokemon) => {
         return (
           <div className="card" key={pokemon.name}>
-            <Link to={`/pokemon/${pokemon.name}`}>
+            <Link to={`/pokemon/${pokemon.pokemon_id}`}>
               <div
                 className="id-card"
                 style={{

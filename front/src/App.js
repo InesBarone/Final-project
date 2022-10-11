@@ -23,7 +23,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   }, [i]);
-  console.log(pokeinfo);
+
 
   return (
     <div className="App">
@@ -37,7 +37,7 @@ function App() {
             element={<Principal pokeinfo={pokeinfo} />}
           ></Route>
           <Route
-            path="/pokemon/:name"
+            path="/pokemon/:id"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
           />
           <Route 
