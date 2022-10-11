@@ -6,6 +6,7 @@ import { Pokeinfo } from "./Components/Pokeinfo/Pokeinfo";
 import { useEffect, useState } from "react";
 import Login from "./Pages/Login/login";
 import Formulario from "./Pages/Formulario/formulario";
+import Register from "./Pages/Register/register";
 
 function App() {
   const [pokeinfo, setPokeinfo] = useState([]);
@@ -43,7 +44,8 @@ function App() {
             path="/pokemon/:id"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
           />
-          <Route path="/formulario" element={<Formulario />}></Route>
+          <Route path="/formulario" element={<Formulario/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
