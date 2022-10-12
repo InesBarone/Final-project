@@ -29,16 +29,15 @@ function App() {
       .catch((err) => console.log(err));
   }, [i]);
 
-  const token = localStorage.getItem("auth-token");
-
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Login />} />
           <Route
-            path="/"
-            element={token ? <Principal pokeinfo={pokeinfo} /> : <Login />}
-          />
+            path="/principal"
+            element={<Principal pokeinfo={pokeinfo} />}
+          ></Route>
           <Route
             path="/pokemon/:id"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}

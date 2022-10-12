@@ -27,6 +27,7 @@ function Login() {
         console.log(responseJSON);
         if (responseJSON.success) {
           localStorage.setItem("auth-token", responseJSON.auth_token);
+          console.log(responseJSON.auth_token);
           navigate("/principal");
         }
       })
