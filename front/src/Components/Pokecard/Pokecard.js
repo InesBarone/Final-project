@@ -4,17 +4,46 @@ import "./Pokecard.css";
 import { Link } from "react-router-dom";
 import Pokecreation from "../PokeCreation/pokecreation";
 
-
 export default function Pokecard({ text, pokeinfo }) {
   let string = text;
   let regex = new RegExp(string, "gi");
   let filtered = pokeinfo.filter(function (pokemon) {
     return pokemon.name.match(regex);
   });
+  console.log(pokeinfo);
 
   return (
     <div className="pokecard-container">
-      <Pokecreation/>
+      <div className="card pokecreation">
+        <Link to={`/formulario`}>
+          <div
+            className="id-card"
+            style={{
+              border: `1px solid black`,
+              borderBottom: "none",
+              borderRadius: "10px 10px 0 0",
+            }}
+          >
+            {"+"}
+          </div>
+          <div
+            className="img-card-container"
+            style={{
+              borderLeft: `1px solid black`,
+              borderRight: `1px solid black`,
+            }}
+          >
+            <img
+              src="./Images/int.png"
+              className="img-card"
+              alt="pokemon-photo"
+            />
+          </div>
+          <div className="name-card" style={{ backgroundColor: `black` }}>
+            {"Agregar"}
+          </div>
+        </Link>
+      </div>
       {filtered.map((pokemon) => {
         return (
           <div className="card" key={pokemon.name}>

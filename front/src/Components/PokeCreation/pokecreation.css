@@ -8,14 +8,14 @@
     gap:1em;
 }
 
-.card {
+.pokecreation-container .card {
     width: 30%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     font-family: 'Poppins', sans-serif;
     overflow: hidden;
 }
 
-.id-card {
+.pokecreation-container .id-card {
     font-size:10px;
     display: flex;
     justify-content: flex-end;
@@ -23,25 +23,27 @@
     text-decoration: none;
 }
 
-.img-card-container {
+.pokecreation-container .img-card-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    width:100%;
+    height: 80%;
 }
 
-.img-card {
-    width:85%;
+.pokecreation-container .img-card {
+    width:170%;
     padding: 0 5px;
 }
 
-.name-card{
+.pokecreation-container .name-card{
     color:white;
     text-align: center;
     font-size:12px;
     width:100%;
-    border-radius: 0 0 10px 10px;
+    /* border-radius: 0 0 10px 10px; */
 }
 
-a {
+.pokecreation-container a {
     text-decoration: none;
 }

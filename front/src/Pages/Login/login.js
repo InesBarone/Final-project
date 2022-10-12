@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
-function Login() {
+function Login({ i }) {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const logueado = false;
@@ -24,9 +24,9 @@ function Login() {
         return r.json();
       })
       .then(function (responseJSON) {
-        console.log(responseJSON);
         if (responseJSON.success) {
           localStorage.setItem("auth-token", responseJSON.auth_token);
+          i = i + 1;
           navigate("/principal");
         }
       })
@@ -67,10 +67,10 @@ function Login() {
               loguearse(mail, password);
             }}
           ></input>
-        <p>If you dont have a user please create an account.</p>
-        <Link to="/register">
-        <button>REGISTER</button>
-        </Link>
+          <p>If you dont have a user please create an account.</p>
+          <Link to="/register">
+            <button>REGISTER</button>
+          </Link>
         </form>
       </div>
     </div>
