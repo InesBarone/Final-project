@@ -26,7 +26,6 @@ function Login({ i }) {
       .then(function (responseJSON) {
         if (responseJSON.success) {
           localStorage.setItem("auth-token", responseJSON.auth_token);
-          i = i + 1;
           navigate("/principal");
         }
       })

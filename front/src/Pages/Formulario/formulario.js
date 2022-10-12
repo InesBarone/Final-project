@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./formulario.css";
 
 export default function Formulario() {
+  const [newName, setnewName] = useState("");
+  const [newWeight, setnewWeight] = useState("");
+  const [newHeight, setnewHeight] = useState("");
+  const [newDescription, setnewDescription] = useState("");
+  const [newHP, setnewHP] = useState("");
+  const [newATK, setnewATK] = useState("");
+  const [newDEF, setnewDEF] = useState("");
+  const [newSATK, setnewSATK] = useState("");
+  const [newSDEF, setnewSDEF] = useState("");
+  const [newSPD, setnewSPD] = useState("");
+  const [newType, setnewType] = useState("");
+
   let inputs = document.getElementsByClassName("formulario__input");
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("keyup", function () {

@@ -4,7 +4,28 @@ import "./Principal.css";
 import { useState, useEffect } from "react";
 import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
 
-export default function Principal({ pokeinfo, setPokeinfo }) {
+export default function Principal() {
+  const [pokeinfo, setPokeinfo] = useState([]);
+  const [i, setI] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:3003/pokemones", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJSON) {
+        setPokeinfo(responseJSON);
+      })
+      .catch((err) => console.log(err));
+  }, [i]);
+
   // Este estado se corresponde con el texto ingresado en la barra de busqueda
   const [text, setText] = useState("");
 
