@@ -9,8 +9,8 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "Admin1234",
-    database: "pokemones",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 
@@ -114,7 +114,5 @@ exports.sharePokemon = function (req, res, next) {
   res.status(200).json({ link: `http://localhost:3000/pokemones/share/${id}` });
   next();
 };
-
-
 
 exports.seePokemon = function (req, res, next) {};
