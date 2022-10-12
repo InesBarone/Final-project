@@ -10,6 +10,7 @@ export default function Pokecard({ text, pokeinfo }) {
   let filtered = pokeinfo.filter(function (pokemon) {
     return pokemon.name.match(regex);
   });
+  console.log(pokeinfo);
 
   return (
     <div className="pokecard-container">
@@ -22,7 +23,9 @@ export default function Pokecard({ text, pokeinfo }) {
               borderBottom: "none",
               borderRadius: "10px 10px 0 0",
             }}
-          ></div>
+          >
+            {"+"}
+          </div>
           <div
             className="img-card-container"
             style={{
@@ -31,13 +34,13 @@ export default function Pokecard({ text, pokeinfo }) {
             }}
           >
             <img
-              src="./Images/pokeinterrogation.png"
+              src="./Images/int.png"
               className="img-card"
               alt="pokemon-photo"
             />
           </div>
           <div className="name-card" style={{ backgroundColor: `black` }}>
-            {"Agregar pokemon"}
+            {"Agregar"}
           </div>
         </Link>
       </div>
