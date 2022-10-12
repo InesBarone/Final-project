@@ -9,7 +9,7 @@
 
 .login-box {
     width: 320px;
-    height: 420px;
+    height: 450px;
     background-color: #000;
     color: #fff;
     top: 50%;
@@ -62,6 +62,21 @@
 }
 
 .login-box input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background-color: #b80f22;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.container-login p {
+    color: white;
+}
+
+.container-login button {
+    width: 100%;
     border: none;
     outline: none;
     height: 40px;

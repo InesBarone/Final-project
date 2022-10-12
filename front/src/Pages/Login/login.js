@@ -68,6 +68,10 @@ function Login() {
               loguearse(mail, password);
             }}
           ></input>
+        <p>If you dont have a user please create an account.</p>
+        <Link to="/register">
+        <button>REGISTER</button>
+        </Link>
         </form>
       </div>
     </div>
