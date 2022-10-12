@@ -12,13 +12,16 @@ app.use(cors());
 
 //CONTROLLERS
 const pokemones = require("./controllers/pokemones");
+const auth = require("./controllers/auth");
+const { validateJWT } = require("./middlewares/jwt");
+app.use(auth);
 
 //ENDPOINTS
 app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-app.get("/pokemones", pokemones.allPokemones);
+app.get("/pokemones", validateJWT, pokemones.allPokemones);
 app.get("/pokemones/:id", pokemones.onePokemon);
 app.post("/pokemones", pokemones.createPokemon);
 app.get("/pokemones/share/:id", pokemones.sharePokemon);

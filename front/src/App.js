@@ -6,6 +6,7 @@ import { Pokeinfo } from "./Components/Pokeinfo/Pokeinfo";
 import { useEffect, useState } from "react";
 import Login from "./Pages/Login/login";
 import Formulario from "./Pages/Formulario/formulario";
+import Register from "./Pages/Register/register";
 
 function App() {
   const [pokeinfo, setPokeinfo] = useState([]);
@@ -14,6 +15,11 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3003/pokemones", {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
     })
       .then(function (response) {
         return response.json();
@@ -24,25 +30,22 @@ function App() {
       .catch((err) => console.log(err));
   }, [i]);
 
+  const token = localStorage.getItem("auth-token");
 
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route 
-          path="/" 
-          element={<Login />} />
           <Route
-            path="/principal"
-            element={<Principal pokeinfo={pokeinfo} />}
-          ></Route>
+            path="/"
+            element={token ? <Principal pokeinfo={pokeinfo} /> : <Login />}
+          />
           <Route
             path="/pokemon/:id"
             element={<Pokebio pokeinfo={pokeinfo} setPokeinfo={setPokeinfo} />}
           />
-          <Route 
-          path="/formulario" 
-          element={<Formulario />}></Route>
+          <Route path="/formulario" element={<Formulario/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
