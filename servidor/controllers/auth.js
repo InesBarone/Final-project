@@ -6,8 +6,8 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "Admin1234",
-    database: "pokemones",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 
@@ -36,7 +36,6 @@ router.post("/register", (req, res, next) => {
     .catch((err) => {
       console.log(err);
       res.status(500).send("malio sal algo");
-      
     });
 });
 
