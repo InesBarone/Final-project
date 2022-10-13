@@ -68,19 +68,19 @@ export default function Pokebio(pokeinfo) {
           <div className="id">{pokeinfo2.pokemon_id}</div>
         </div>
         <div className="pokePhoto-container">
-          {/* <Link to={`/pokemon/${changePokemonLeft()}`}>
+           <Link to={`/pokemon/${changePokemonLeft()}`}>
             <button className="arrow-button2">{"<"}</button>
-          </Link> */}
+          </Link> 
           <img
             src={pokeinfo2.img}
             alt="Pokemon picture"
             className="pokePhoto"
           />
-          {/* <Link to={`/pokemon/${changePokemonRight()}`}>
+          <Link to={`/pokemon/${changePokemonRight()}`}>
             <button className="arrow-button2" style={{ color: `` }}>
               {">"}
             </button>
-          </Link> */}
+          </Link> 
         </div>
         <Pokestats
           pokeinfo2={pokeinfo2}
