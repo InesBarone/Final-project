@@ -41,7 +41,7 @@ exports.onePokemon = function (req, res, next) {
       next();
     })
     .catch((err) => {
-      console.log(err);
+      res.status(404).json({ msg: "no encontrado" });
     });
 };
 
