@@ -89,6 +89,10 @@ export default function Principal() {
     }
   };
 
+  const deslogeo = () => {
+    localStorage.removeItem("auth-token");
+  };
+
   return (
     <div className="Principal-container">
       <header>
@@ -101,7 +105,7 @@ export default function Principal() {
             />
             <h1>Pokedex</h1>
             <Link to="/"> 
-            <button className="back-to-login">Cerrar sesión</button>
+            <button className="back-to-login" onClick={deslogeo}>Cerrar sesión</button>
             </Link>
           </div>
           {order ? (
