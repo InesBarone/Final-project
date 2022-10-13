@@ -13,7 +13,56 @@ export default function Formulario() {
   const [newSATK, setnewSATK] = useState("");
   const [newSDEF, setnewSDEF] = useState("");
   const [newSPD, setnewSPD] = useState("");
+  const [newMoves, setnewMoves] = useState("");
   const [newType, setnewType] = useState("");
+
+  const handleCreate = ({
+    newName,
+    newImg,
+    newWeight,
+    newHeight,
+    newDescription,
+    newHP,
+    newATK,
+    newDEF,
+    newSATK,
+    newSDEF,
+    newSPD,
+    newType,
+  }) => {
+    fetch(`http://localhost:3003/createPokemon`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: newName,
+        img: newImg,
+        weight: newWeight,
+        height: newHeight,
+        description: newDescription,
+        hp: newHP,
+        atk: newATK,
+        def: newDEF,
+        satk: newSATK,
+        sdef: newSDEF,
+        spd: newSPD,
+        type_1: newType,
+        type_2: null,
+        moves: newMoves,
+      }),
+    })
+      .then((r) => {
+        return r.json();
+      })
+      .then(function (responseJSON) {
+        console.log(responseJSON);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   let inputs = document.getElementsByClassName("formulario__input");
   for (let i = 0; i < inputs.length; i++) {
@@ -117,16 +166,24 @@ export default function Formulario() {
         <label for="" className="formulario__label">
           SPD
         </label>
+        <input
+          type="text"
+          className="formulario__input"
+          onChange={(e) => setnewMoves(e.target.value)}
+        />
+        <label for="" className="formulario__label">
+          SPD
+        </label>
         <form className="type_form">
           Pokemon type
           <select onChange={(e) => setnewType(e.target.value)}>
             <option disabled>Select Pokemon type</option>
-            <option value="1">Poison</option>
-            <option value="2">Electric</option>
-            <option value="3">Fire</option>
-            <option value="4">Water</option>
-            <option value="5">Flying</option>
-            <option value="6">Ghost</option>
+            <option value="2">Poison</option>
+            <option value="12">Electric</option>
+            <option value="5">Fire</option>
+            <option value="6">Water</option>
+            <option value="4">Flying</option>
+            <option value="10">Ghost</option>
           </select>
           {console.log(newType)}
         </form>
@@ -134,6 +191,23 @@ export default function Formulario() {
           type="button"
           value="Send"
           className="formulario__submit"
+          onClick={(e) => {
+            handleCreate(
+              newName,
+              newImg,
+              newWeight,
+              newHeight,
+              newDescription,
+              newHP,
+              newATK,
+              newDEF,
+              newSATK,
+              newSDEF,
+              newSPD,
+              newMoves,
+              newType
+            );
+          }}
         ></input>
       </form>
     </div>
