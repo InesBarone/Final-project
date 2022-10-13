@@ -32,6 +32,7 @@ export default function Pokebio(pokeinfo) {
     color: `${pokeinfo2.type_colour_1}`,
   };
 
+
   // let index = pokeinfo2.indexOf(pokeinfo2);
   // const changePokemonLeft = () => {
   //   if (index === 0) {

@@ -5,6 +5,34 @@ import "./Pokestats.css";
 
 export default function Pokestats({ pokeinfo2, aboutColor}) {
 const types = [pokeinfo2.type_colour_1, pokeinfo2.type_colour_2]
+
+const stats = [
+  {
+    name: "HP",
+    value: pokeinfo2.hp,
+  },
+  {
+    name: "ATK",
+    value:pokeinfo2.atk ,
+  },
+  {
+    name: "DET",
+    value:pokeinfo2.det ,
+  },
+  {
+    name: "SATK",
+    value:pokeinfo2.satk ,
+  },
+  {
+    name: "SDEF",
+    value: pokeinfo2.sdef,
+  },
+  {
+    name: "SPD",
+    value:pokeinfo2.spd ,
+  },
+]
+
 console.log(pokeinfo2)
   return (
     <div className="poke-stats">
@@ -75,13 +103,14 @@ console.log(pokeinfo2)
       <h2 className="base-stats" style={aboutColor}>
         Base Stats
       </h2>
-      {/* <div className="general-stats">
+       <div className="general-stats">
         <div className="stats-container">
-          {info[0].stats.map((stat) => {
+         
+          {stats.map((stat) => {
             return (
               <div className="base-stats-line" key={stat.name}>
                 <div className="stat-name">
-                  <h5 style={{ color: `${info[0].primaryColor}` }}>
+                  <h5 style={{ color: `${pokeinfo2.type_colour_1}` }}>
                     {stat.name}
                   </h5>
                 </div>
@@ -95,7 +124,7 @@ console.log(pokeinfo2)
                     min="0"
                     max="220"
                     customLabel=" "
-                    bgColor={info[0].primaryColor}
+                    bgColor={pokeinfo2.type_colour_1}
                     className="bar"
                     height="5px"
                   />
@@ -104,7 +133,7 @@ console.log(pokeinfo2)
             );
           })}
         </div>
-      </div> */}
+      </div> 
     </div>
   );
 }
