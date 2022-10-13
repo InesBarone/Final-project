@@ -51,12 +51,6 @@
     padding: 0 5px;
 }
 
-@media (min-width:700px) {
-    .pokecreation .img-card {
-        width:160%;
-        padding: 0 5px;
-    }
-}
 
 .img-card {
     width:85%;
