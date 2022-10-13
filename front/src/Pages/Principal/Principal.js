@@ -3,8 +3,30 @@ import Pokecard from "../../Components/Pokecard/Pokecard";
 import "./Principal.css";
 import { useState, useEffect } from "react";
 import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
+import { Link } from "react-router-dom";
 
-export default function Principal({ pokeinfo, setPokeinfo }) {
+export default function Principal() {
+  const [pokeinfo, setPokeinfo] = useState([]);
+  const [i, setI] = useState(0);
+
+  useEffect(() => {
+    fetch("http://localhost:3003/pokemones", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJSON) {
+        setPokeinfo(responseJSON);
+      })
+      .catch((err) => console.log(err));
+  }, [i]);
+
   // Este estado se corresponde con el texto ingresado en la barra de busqueda
   const [text, setText] = useState("");
 
@@ -60,11 +82,15 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
       let array = [...previousState];
       return array.reverse();
     });
-    if (imgArrow == arrows[0]) {
+    if (imgArrow === arrows[0]) {
       setImgArrow(arrows[1]);
     } else {
       setImgArrow(arrows[0]);
     }
+  };
+
+  const deslogeo = () => {
+    localStorage.removeItem("auth-token");
   };
 
   return (
@@ -77,7 +103,10 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
               className="logo"
               alt="Logo pokebola"
             />
-            <h1>Pokédex</h1>
+            <h1>Pokedex</h1>
+            <Link to="/"> 
+            <button className="back-to-login" onClick={deslogeo}>Cerrar sesión</button>
+            </Link>
           </div>
           {order ? (
             <div style={{ display: "flex" }}>
@@ -115,3 +144,9 @@ export default function Principal({ pokeinfo, setPokeinfo }) {
     </div>
   );
 }
+
+//git checkout -b nombreDeBranch ---> crear una branch
+
+//git fetch ---> actualizar todas las branches
+//git pull
+// git checkout nombreDeBranch ---> entrar a la branch
