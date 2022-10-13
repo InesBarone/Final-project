@@ -3,6 +3,7 @@ import Pokecard from "../../Components/Pokecard/Pokecard";
 import "./Principal.css";
 import { useState, useEffect } from "react";
 import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
+import { Link } from "react-router-dom";
 
 export default function Principal() {
   const [pokeinfo, setPokeinfo] = useState([]);
@@ -88,6 +89,10 @@ export default function Principal() {
     }
   };
 
+  const deslogeo = () => {
+    localStorage.removeItem("auth-token");
+  };
+
   return (
     <div className="Principal-container">
       <header>
@@ -99,6 +104,9 @@ export default function Principal() {
               alt="Logo pokebola"
             />
             <h1>Pokedex</h1>
+            <Link to="/"> 
+            <button className="back-to-login" onClick={deslogeo}>Cerrar sesión</button>
+            </Link>
           </div>
           {order ? (
             <div style={{ display: "flex" }}>
