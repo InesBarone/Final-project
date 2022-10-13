@@ -23,7 +23,7 @@ app.get("/ping", (req, res) => {
 
 app.get("/pokemones", validateJWT, pokemones.allPokemones);
 app.get("/pokemones/:id", pokemones.onePokemon);
-app.post("/pokemones", pokemones.createPokemon);
+app.post("/formulario", pokemones.createPokemon);
 app.get("/pokemones/share/:id", pokemones.sharePokemon);
 
 app.listen(3003, () => {

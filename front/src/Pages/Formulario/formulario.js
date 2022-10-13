@@ -16,21 +16,8 @@ export default function Formulario() {
   const [newMoves, setnewMoves] = useState("");
   const [newType, setnewType] = useState("");
 
-  const handleCreate = ({
-    newName,
-    newImg,
-    newWeight,
-    newHeight,
-    newDescription,
-    newHP,
-    newATK,
-    newDEF,
-    newSATK,
-    newSDEF,
-    newSPD,
-    newType,
-  }) => {
-    fetch(`http://localhost:3003/createPokemon`, {
+  const handleCreate = () => {
+    fetch(`http://localhost:3003/formulario`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,8 +35,8 @@ export default function Formulario() {
         satk: newSATK,
         sdef: newSDEF,
         spd: newSPD,
-        type_1: newType,
-        type_2: null,
+        type_1: parseInt(newType),
+        type_2: 0,
         moves: newMoves,
       }),
     })
@@ -172,7 +159,7 @@ export default function Formulario() {
           onChange={(e) => setnewMoves(e.target.value)}
         />
         <label for="" className="formulario__label">
-          SPD
+          Moves
         </label>
         <form className="type_form">
           Pokemon type
@@ -185,28 +172,13 @@ export default function Formulario() {
             <option value="4">Flying</option>
             <option value="10">Ghost</option>
           </select>
-          {console.log(newType)}
         </form>
         <input
           type="button"
           value="Send"
           className="formulario__submit"
           onClick={(e) => {
-            handleCreate(
-              newName,
-              newImg,
-              newWeight,
-              newHeight,
-              newDescription,
-              newHP,
-              newATK,
-              newDEF,
-              newSATK,
-              newSDEF,
-              newSPD,
-              newMoves,
-              newType
-            );
+            handleCreate();
           }}
         ></input>
       </form>
