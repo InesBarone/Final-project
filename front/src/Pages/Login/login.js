@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../../Components/Button/button";
 import "./login.css";
 
 function Login({ i }) {
@@ -34,6 +35,8 @@ function Login({ i }) {
       });
   };
 
+
+
   return (
     <div className="container-login">
       <div className="login-box">
@@ -58,17 +61,17 @@ function Login({ i }) {
             }}
           ></input>
 
-          <input
-            type="submit"
-            value="Log In"
+          <Button
+            text="Log In"
             onClick={(e) => {
               e.preventDefault();
               loguearse(mail, password);
             }}
-          ></input>
+          />
           <p>If you dont have a user please create an account.</p>
           <Link to="/register">
-            <button>REGISTER</button>
+            <Button 
+            text="REGISTER"/>
           </Link>
         </form>
       </div>

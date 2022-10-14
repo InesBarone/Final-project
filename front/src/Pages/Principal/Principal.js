@@ -4,6 +4,7 @@ import "./Principal.css";
 import { useState, useEffect } from "react";
 import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
 import { Link } from "react-router-dom";
+import Button from "../../Components/Button/button";
 
 export default function Principal() {
   const [pokeinfo, setPokeinfo] = useState([]);
@@ -91,7 +92,7 @@ export default function Principal() {
 
   const deslogeo = () => {
     localStorage.removeItem("auth-token");
-  };
+  }
 
   return (
     <div className="Principal-container">
@@ -105,7 +106,7 @@ export default function Principal() {
             />
             <h1>Pokedex</h1>
             <Link to="/"> 
-            <button className="back-to-login" onClick={deslogeo}>Cerrar sesión</button>
+            <Button text="Cerrar sesión" onClick={deslogeo}/>
             </Link>
           </div>
           {order ? (
