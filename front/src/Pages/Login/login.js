@@ -61,7 +61,9 @@ function Login({ i }) {
             }}
           ></input>
 
-          <Button
+          <input
+            type="submit"
+            value="Log in"
             text="Log In"
             onClick={(e) => {
               e.preventDefault();
