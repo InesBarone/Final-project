@@ -61,6 +61,8 @@ function Login({ i }) {
 
           <input
             text="Log In"
+            type="submit"
+            value="Login"
             onClick={(e) => {
               e.preventDefault();
               loguearse(mail, password);

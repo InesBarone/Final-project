@@ -11,6 +11,9 @@ export default function Pokebio() {
 
   const params = useParams;
   const id = params().id;
+  console.log("id es", id);
+  const [idEffect, setIdEffect] = useState(id);
+  console.log("idEffect es", id);
 
   useEffect(() => {
     fetch(`http://localhost:3003/pokemones/${id}`, {
@@ -40,7 +43,7 @@ export default function Pokebio() {
         setPokeinfo(responseJSON);
       })
       .catch((err) => console.log(err));
-  }, []);
+  });
 
   const background = {
     backgroundColor: `${pokemon.type_colour_1}`,
@@ -50,38 +53,32 @@ export default function Pokebio() {
     color: `${pokemon.type_colour_1}`,
   };
 
-  // let arr = [];
-  // pokeinfo.map((pokemon) => arr.push(pokemon.pokemon_id));
-  // let idPokemon = parseInt(id);
-  // let index = arr.indexOf(idPokemon);
-  // console.log(arr);
-  // console.log(index);
+  const changePokemonLeft = () => {
+    if (!pokeinfo[0]) {
+      return "0";
+    }
+    if (index === 0) {
+      return `${pokeinfo[pokeinfo.length - 1].pokemon_id}`;
+    } else {
+      return `${pokeinfo[index - 1].pokemon_id}`;
+    }
+  };
 
-  // let index = pokeinfo.indexOf(pokemon);
+  const index = pokeinfo.findIndex(
+    (pokemon) => pokemon.pokemon_id === parseInt(id)
+  );
+  console.log(index);
 
-  // const changePokemonLeft = () => {
-  //   if (index === 0) {
-  //     return `${pokeinfo[pokeinfo.length - 1].pokemon_id}`;
-  //   }
-  //   // else {
-  //   //   return `${pokeinfo[index - 1].pokemon_id}`;
-  //   // }
-  // };
-
-  const pokemonId = pokeinfo.filter((pokemon) => pokemon.pokemon_id === id);
-  console.log(pokemonId);
-
-  // const changePokemonRight = () => {
-  //   if (!pokeinfo[0]) {
-  //     return "0";
-  //   }
-  //   debugger;
-  //   if (index === pokeinfo.length - 1) {
-  //     return `${pokeinfo[0].pokemon_id}`;
-  //   } else {
-  //     return `${pokeinfo[index + 1].pokemon_id}`;
-  //   }
-  // };
+  const changePokemonRight = () => {
+    if (!pokeinfo[0]) {
+      return "0";
+    }
+    if (index === pokeinfo.length - 1) {
+      return `${pokeinfo[0].pokemon_id}`;
+    } else {
+      return `${pokeinfo[index + 1].pokemon_id}`;
+    }
+  };
 
   return (
     <div>
@@ -92,7 +89,7 @@ export default function Pokebio() {
           <div className="header">
             <img src="/Images/Pokeball (1).png" className="img-pokebola" />
             <div className="arrow-name">
-              <Link to="/">
+              <Link to="/principal">
                 <img
                   src="/Images/arrow-left-w.svg"
                   className="arrow-left"
@@ -104,19 +101,19 @@ export default function Pokebio() {
             <div className="id">{pokemon.pokemon_id}</div>
           </div>
           <div className="pokePhoto-container">
-            {/* <Link to={`/pokemon/${changePokemonLeft()}`}>
+            <Link to={`/pokemon/${changePokemonLeft()}`}>
               <button className="arrow-button2">{"<"}</button>
-            </Link> */}
+            </Link>
             <img
               src={pokemon.img}
               alt="Pokemon picture"
               className="pokePhoto"
             />
-            {/* <Link to={`/pokemon/${changePokemonRight()}`}>
+            <Link to={`/pokemon/${changePokemonRight()}`}>
               <button className="arrow-button2" style={{ color: `` }}>
                 {">"}
               </button>
-            </Link> */}
+            </Link>
           </div>
           <Pokestats
             pokeinfo2={pokemon}
