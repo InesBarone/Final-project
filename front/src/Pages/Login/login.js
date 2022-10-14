@@ -35,8 +35,6 @@ function Login({ i }) {
       });
   };
 
-
-
   return (
     <div className="container-login">
       <div className="login-box">
@@ -61,7 +59,7 @@ function Login({ i }) {
             }}
           ></input>
 
-          <Button
+          <input
             text="Log In"
             onClick={(e) => {
               e.preventDefault();
@@ -70,8 +68,7 @@ function Login({ i }) {
           />
           <p>If you dont have a user please create an account.</p>
           <Link to="/register">
-            <Button 
-            text="REGISTER"/>
+            <Button text="REGISTER" />
           </Link>
         </form>
       </div>

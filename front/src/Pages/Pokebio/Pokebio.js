@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
 import Pokestats from "../../Components/Pokestats/Pokestats";
+import Error from "../Error/Error";
 import "./Pokebio.css";
 
-export default function Pokebio(pokeinfo) {
-  const [pokeinfo2, setPokeinfo2] = useState([]);
-  const [i, setI] = useState(0);
+export default function Pokebio() {
+  const [pokemon, setPokemon] = useState([]);
+  const [seeError, setSeeError] = useState(false);
+  const [pokeinfo, setPokeinfo] = useState([]);
 
   const params = useParams;
   const id = params().id;
-  console.log(pokeinfo2);
+
   useEffect(() => {
     fetch(`http://localhost:3003/pokemones/${id}`, {
       method: "GET",
@@ -19,75 +20,111 @@ export default function Pokebio(pokeinfo) {
         return response.json();
       })
       .then(function (responseJSON) {
-        setPokeinfo2(responseJSON[0]);
+        setSeeError(false);
+        setPokemon(responseJSON[0]);
+      })
+      .catch((err) => setSeeError(true));
+
+    fetch("http://localhost:3003/pokemones", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJSON) {
+        setPokeinfo(responseJSON);
       })
       .catch((err) => console.log(err));
-  }, [i]);
+  }, []);
 
   const background = {
-    backgroundColor: `${pokeinfo2.type_colour_1}`,
+    backgroundColor: `${pokemon.type_colour_1}`,
   };
 
   const aboutColor = {
-    color: `${pokeinfo2.type_colour_1}`,
+    color: `${pokemon.type_colour_1}`,
   };
 
+  // let arr = [];
+  // pokeinfo.map((pokemon) => arr.push(pokemon.pokemon_id));
+  // let idPokemon = parseInt(id);
+  // let index = arr.indexOf(idPokemon);
+  // console.log(arr);
+  // console.log(index);
 
-  // let index = pokeinfo2.indexOf(pokeinfo2);
+  // let index = pokeinfo.indexOf(pokemon);
+
   // const changePokemonLeft = () => {
   //   if (index === 0) {
-  //     return `${pokeinfo2[pokeinfo2.length - 1].name}`;
-  //   } else {
-  //     return `${pokeinfo2[index - 1].name}`;
+  //     return `${pokeinfo[pokeinfo.length - 1].pokemon_id}`;
   //   }
+  //   // else {
+  //   //   return `${pokeinfo[index - 1].pokemon_id}`;
+  //   // }
   // };
 
+  const pokemonId = pokeinfo.filter((pokemon) => pokemon.pokemon_id === id);
+  console.log(pokemonId);
+
   // const changePokemonRight = () => {
-  //   if (index === pokeinfo2.length - 1) {
-  //     return `${pokeinfo2.name}`;
+  //   if (!pokeinfo[0]) {
+  //     return "0";
+  //   }
+  //   debugger;
+  //   if (index === pokeinfo.length - 1) {
+  //     return `${pokeinfo[0].pokemon_id}`;
   //   } else {
-  //     return `${pokeinfo2[index + 1].name}`;
+  //     return `${pokeinfo[index + 1].pokemon_id}`;
   //   }
   // };
 
   return (
     <div>
-      <div className="Pokebio-container" style={background}>
-        <div className="header">
-          <img src="/Images/Pokeball (1).png" className="img-pokebola" />
-          <div className="arrow-name">
-            <Link to="/">
-              <img
-                src="/Images/arrow-left-w.svg"
-                className="arrow-left"
-                alt="Arrow left"
-              />
-            </Link>
-            <h1 className="name-pokemon">{pokeinfo2.name}</h1>
+      {seeError ? (
+        <Error />
+      ) : (
+        <div className="Pokebio-container" style={background}>
+          <div className="header">
+            <img src="/Images/Pokeball (1).png" className="img-pokebola" />
+            <div className="arrow-name">
+              <Link to="/">
+                <img
+                  src="/Images/arrow-left-w.svg"
+                  className="arrow-left"
+                  alt="Arrow left"
+                />
+              </Link>
+              <h1 className="name-pokemon">{pokemon.name}</h1>
+            </div>
+            <div className="id">{pokemon.pokemon_id}</div>
           </div>
-          <div className="id">{pokeinfo2.pokemon_id}</div>
-        </div>
-        <div className="pokePhoto-container">
-           <Link to={`/pokemon/${changePokemonLeft()}`}>
-            <button className="arrow-button2">{"<"}</button>
-          </Link> 
-          <img
-            src={pokeinfo2.img}
-            alt="Pokemon picture"
-            className="pokePhoto"
+          <div className="pokePhoto-container">
+            {/* <Link to={`/pokemon/${changePokemonLeft()}`}>
+              <button className="arrow-button2">{"<"}</button>
+            </Link> */}
+            <img
+              src={pokemon.img}
+              alt="Pokemon picture"
+              className="pokePhoto"
+            />
+            {/* <Link to={`/pokemon/${changePokemonRight()}`}>
+              <button className="arrow-button2" style={{ color: `` }}>
+                {">"}
+              </button>
+            </Link> */}
+          </div>
+          <Pokestats
+            pokeinfo2={pokemon}
+            aboutColor={aboutColor}
+            pokeinfo={pokeinfo}
           />
-          <Link to={`/pokemon/${changePokemonRight()}`}>
-            <button className="arrow-button2" style={{ color: `` }}>
-              {">"}
-            </button>
-          </Link> 
         </div>
-        <Pokestats
-          pokeinfo2={pokeinfo2}
-          aboutColor={aboutColor}
-          pokeinfo={pokeinfo}
-        />
-      </div>
+      )}
     </div>
   );
 }

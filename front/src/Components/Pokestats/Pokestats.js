@@ -3,42 +3,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Pokestats.css";
 
-export default function Pokestats({ pokeinfo2, aboutColor}) {
-const types = [pokeinfo2.type_colour_1, pokeinfo2.type_colour_2]
+export default function Pokestats({ pokeinfo2, aboutColor }) {
+  const types = [pokeinfo2.type_colour_1, pokeinfo2.type_colour_2];
 
-const stats = [
-  {
-    name: "HP",
-    value: pokeinfo2.hp,
-  },
-  {
-    name: "ATK",
-    value:pokeinfo2.atk ,
-  },
-  {
-    name: "DET",
-    value:pokeinfo2.det ,
-  },
-  {
-    name: "SATK",
-    value:pokeinfo2.satk ,
-  },
-  {
-    name: "SDEF",
-    value: pokeinfo2.sdef,
-  },
-  {
-    name: "SPD",
-    value:pokeinfo2.spd ,
-  },
-]
+  const stats = [
+    {
+      name: "HP",
+      value: pokeinfo2.hp,
+    },
+    {
+      name: "ATK",
+      value: pokeinfo2.atk,
+    },
+    {
+      name: "DET",
+      value: pokeinfo2.det,
+    },
+    {
+      name: "SATK",
+      value: pokeinfo2.satk,
+    },
+    {
+      name: "SDEF",
+      value: pokeinfo2.sdef,
+    },
+    {
+      name: "SPD",
+      value: pokeinfo2.spd,
+    },
+  ];
 
-console.log(pokeinfo2)
   return (
     <div className="poke-stats">
       <div className="poke-type-container">
         {types.map((type, i) => {
-          if (i == 0){ 
+          if (i == 0) {
             return (
               <div
                 className="poke-type"
@@ -48,8 +47,7 @@ console.log(pokeinfo2)
                 {pokeinfo2.type_name_1}
               </div>
             );
-          }
-           else {
+          } else {
             return (
               <div
                 className="poke-type"
@@ -103,9 +101,8 @@ console.log(pokeinfo2)
       <h2 className="base-stats" style={aboutColor}>
         Base Stats
       </h2>
-       <div className="general-stats">
+      <div className="general-stats">
         <div className="stats-container">
-         
           {stats.map((stat) => {
             return (
               <div className="base-stats-line" key={stat.name}>
@@ -133,7 +130,7 @@ console.log(pokeinfo2)
             );
           })}
         </div>
-      </div> 
+      </div>
     </div>
   );
 }
