@@ -67,7 +67,7 @@ export default function Pokebio(pokeinfo) {
           </div>
           <div className="id">{pokeinfo2.pokemon_id}</div>
         </div>
-        <div className="pokePhoto-container">
+        {/* <div className="pokePhoto-container">
            <Link to={`/pokemon/${changePokemonLeft()}`}>
             <button className="arrow-button2">{"<"}</button>
           </Link> 
@@ -79,9 +79,9 @@ export default function Pokebio(pokeinfo) {
           <Link to={`/pokemon/${changePokemonRight()}`}>
             <button className="arrow-button2" style={{ color: `` }}>
               {">"}
-            </button>
-          </Link> 
-        </div>
+            </button> */}
+          {/* </Link>  */}
+        {/* </div> */}
         <Pokestats
           pokeinfo2={pokeinfo2}
           aboutColor={aboutColor}

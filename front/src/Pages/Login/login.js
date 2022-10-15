@@ -73,8 +73,7 @@ function Login({ i }) {
           <p>If you dont have a user please create an account.</p>
           <div className="register-button"> 
           <Link to="/register">
-            <Button 
-            text="REGISTER"/>
+            <Button text="REGISTER"/>
           </Link>
           </div>
         </form>
