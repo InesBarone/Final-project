@@ -34,7 +34,7 @@ export default function Pokestats({ pokeinfo2, aboutColor }) {
   ];
 
   return (
-    <div className="poke-stats">
+    <div>
       <div className="poke-type-container">
         {types.map((type, i) => {
           if (i == 0) {

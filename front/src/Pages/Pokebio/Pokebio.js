@@ -43,7 +43,7 @@ export default function Pokebio() {
         setPokeinfo(responseJSON);
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   const background = {
     backgroundColor: `${pokemon.type_colour_1}`,
@@ -81,7 +81,7 @@ export default function Pokebio() {
   };
 
   return (
-    <div>
+    <div className="container-poke">
       {seeError ? (
         <Error />
       ) : (
@@ -115,11 +115,13 @@ export default function Pokebio() {
               </button>
             </Link>
           </div>
-          <Pokestats
-            pokeinfo2={pokemon}
-            aboutColor={aboutColor}
-            pokeinfo={pokeinfo}
-          />
+          <div className="poke-stats">
+            <Pokestats
+              pokeinfo2={pokemon}
+              aboutColor={aboutColor}
+              pokeinfo={pokeinfo}
+            />
+          </div>
         </div>
       )}
     </div>

@@ -4,7 +4,7 @@
     gap: 5%;
 }
 
-.poke-stats {
+/* .poke-stats {
     width:97%;
     margin-top:28%;
     background-color: white;
@@ -14,7 +14,7 @@
     font-family: 'Poppins', sans-serif;
     position: absolute;
     height:70vh;
-}
+} */
 
 @media (min-width:900px) {
     .poke-stats {
