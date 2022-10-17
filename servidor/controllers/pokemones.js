@@ -50,7 +50,7 @@ exports.onePokemon = function (req, res, next) {
       res.status(404).json({ msg: "no encontrado" });
     });
 };
-
+// hola
 exports.createPokemon = function (req, res, next) {
   knex("pokemones")
     .max("poke_number")
