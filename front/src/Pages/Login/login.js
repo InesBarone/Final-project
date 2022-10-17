@@ -37,7 +37,7 @@ function Login({ i }) {
         console.log(err);
       });
   };
-  
+
 
 
   return (
@@ -65,18 +65,20 @@ function Login({ i }) {
           ></input>
 
           <input
-            type="submit"
-            value="Log in"
             text="Log In"
+            type="submit"
+            value="Login"
             onClick={(e) => {
               e.preventDefault();
               loguearse(mail, password);
             }}
           />
           <p>If you dont have a user please create an account.</p>
-          <Link to="/register">
-            <Button text="REGISTER"/>
-          </Link>
+          <div className="register-button">
+            <Link to="/register">
+              <Button text="REGISTER" />
+            </Link>
+          </div>
         </form>
       </div>
     </div>

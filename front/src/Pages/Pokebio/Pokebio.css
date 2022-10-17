@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    padding: 2%;
 }
 
 .header {
@@ -70,6 +71,23 @@ h1.name-pokemon {
 .pokePhoto {
     max-width: 300px;
 }
+
+.container-poke {
+    position: relative;
+    min-height: 100vh;
+}
+
+.poke-stats {
+    position: absolute;
+    width:97%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5%;
+    font-family: 'Poppins', sans-serif;
+    height:80vh;
+    top: 30vh;
+}
+
 @media (min-width:400px) {
     .pokePhoto {
         position: relative;

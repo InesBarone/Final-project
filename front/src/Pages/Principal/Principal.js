@@ -106,7 +106,7 @@ export default function Principal() {
             />
             <h1>Pokedex</h1>
             <Link to="/"> 
-            <Button  text="Cerrar sesión" onClick={deslogeo}/>
+            <Button text="Cerrar sesión" onClick={deslogeo}/>
             </Link>
           </div>
           {order ? (
@@ -134,8 +134,8 @@ export default function Principal() {
         </div>
         <input
           type="search"
-          placeholder="🔎 Buscar"
-          className="search-bar"
+          placeholder="🔎 Search Pokemon"
+          className="formulario__input"
           onChange={manejarInput}
         />
       </header>
