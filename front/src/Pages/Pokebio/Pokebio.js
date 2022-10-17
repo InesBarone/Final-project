@@ -11,9 +11,6 @@ export default function Pokebio() {
 
   const params = useParams;
   const id = params().id;
-  console.log("id es", id);
-  const [idEffect, setIdEffect] = useState(id);
-  console.log("idEffect es", id);
 
   useEffect(() => {
     fetch(`http://localhost:3003/pokemones/${id}`, {
@@ -43,7 +40,7 @@ export default function Pokebio() {
         setPokeinfo(responseJSON);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
   const background = {
     backgroundColor: `${pokemon.type_colour_1}`,
