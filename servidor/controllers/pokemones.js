@@ -18,7 +18,9 @@ exports.allPokemones = function (req, res, next) {
   const userId = req.user_id;
   knex
     .raw(
-      "select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 ;"
+      "select * from relation rel inner join ( select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 ) as todo on rel.user_id = '" +
+        userId +
+        "' and todo.pokemon_id = rel.pokemon_id;"
     )
     .then((resultado) => {
       res.status(200).json(resultado.rows);
@@ -30,12 +32,15 @@ exports.allPokemones = function (req, res, next) {
 };
 
 exports.onePokemon = function (req, res, next) {
+  const userId = req.user_id;
   const id = req.params.id;
   knex
     .raw(
-      "select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 where '" +
+      "select * from relation rel inner join ( select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 ) as todo on rel.user_id = '" +
+        userId +
+        "' and todo.pokemon_id = rel.pokemon_id where '" +
         id +
-        "' = p.pokemon_id ;"
+        "' = rel.pokemon_id ;"
     )
     .then((resultado) => {
       res.status(200).json(resultado.rows);
