@@ -7,7 +7,7 @@ import "./Pokebio.css";
 export default function Pokebio(pokeinfo) {
   const [pokeinfo2, setPokeinfo2] = useState([]);
   const [i, setI] = useState(0);
-
+  let navigate = useNavigate();
   const params = useParams;
   const id = params().id;
   console.log(pokeinfo2);
@@ -21,7 +21,8 @@ export default function Pokebio(pokeinfo) {
       .then(function (responseJSON) {
         setPokeinfo2(responseJSON[0]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => 
+      console.log(err));
   }, [i]);
 
   const background = {

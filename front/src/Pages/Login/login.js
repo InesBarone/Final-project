@@ -29,12 +29,15 @@ function Login({ i }) {
           localStorage.setItem("auth-token", responseJSON.auth_token);
           navigate("/principal");
         }
+        else {
+          navigate("/error404");
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+  
 
 
   return (
