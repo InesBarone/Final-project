@@ -106,7 +106,7 @@ export default function Principal() {
             />
             <h1>Pokedex</h1>
             <Link to="/"> 
-            <Button text="Log out" onClick={deslogeo}/>
+            <Button text="Cerrar sesión" onClick={deslogeo}/>
             </Link>
           </div>
           {order ? (

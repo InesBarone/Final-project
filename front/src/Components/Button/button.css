@@ -1,6 +1,11 @@
 .button-green button {
+<<<<<<< HEAD
   /* margin: 0 50px; */
   height: 40px;
+=======
+  margin: 0 50px;
+  height: 35px;
+>>>>>>> 1b391d32ae2ece8943b303e32c024571672d462d
   position: relative;
   padding: 10px 20px;
   font-size: 12px;
@@ -33,6 +38,6 @@
 
 .button-green button:hover {
     color: #c0e4da;
-    background: #f86f6f;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .7);
+    background: #ff5858;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.315);
 }

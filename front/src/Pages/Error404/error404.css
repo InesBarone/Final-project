@@ -1,0 +1,41 @@
+
+.h1404 {
+  font-size: 150px;
+  margin: 10px;
+ margin-bottom: 60px;
+}
+
+.img404 {
+  height: 150px;
+  margin-bottom: 60px;
+}
+
+.a404 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin-top: 150px;
+  overflow: hidden;
+}
+
+.h2404 {
+  font-size: 30px;
+}
+
+.p404 {
+  font-size: 30px;
+  color: gray;
+}
+
+.Notfound {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
