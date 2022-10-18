@@ -15,6 +15,11 @@ export default function Pokebio() {
   useEffect(() => {
     fetch(`http://localhost:3003/pokemones/${id}`, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
     })
       .then(function (response) {
         return response.json();
