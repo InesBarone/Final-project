@@ -14,6 +14,9 @@ const knex = require("knex")({
   },
 });
 
+const jwt = require("jsonwebtoken");
+const SECRET = require("../middlewares/jwt").SECRET;
+
 exports.allPokemones = function (req, res, next) {
   const userId = req.user_id;
   knex
@@ -50,7 +53,7 @@ exports.onePokemon = function (req, res, next) {
       res.status(404).json({ msg: "no encontrado" });
     });
 };
-// hola
+
 exports.createPokemon = function (req, res, next) {
   knex("pokemones")
     .max("poke_number")
@@ -79,36 +82,68 @@ exports.createPokemon = function (req, res, next) {
       const type_1 = req.body.type_1;
       const type_2 = req.body.type_2;
       const moves = req.body.moves;
-      knex
-        .insert({
-          poke_number: number,
-          id: id,
-          name: name,
-          img: img,
-          weight: weight,
-          height: height,
-          description: description,
-          hp: hp,
-          atk: atk,
-          def: def,
-          satk: satk,
-          sdef: sdef,
-          spd: spd,
-          type_1: type_1,
-          type_2: type_2,
-          moves: moves,
-        })
-        .into("pokemones")
-        .then((response) => {
-          res.status(200).json({ message: "se agrego" });
-          console.log(number);
-          console.log(Math.floor(number / 10));
-          next();
-        })
-        .catch((err) => {
-          console.log(err);
-          next();
-        });
+      pokemon = {
+        poke_number: number,
+        id: id,
+        name: name,
+        img: img,
+        weight: weight,
+        height: height,
+        description: description,
+        hp: hp,
+        atk: atk,
+        def: def,
+        satk: satk,
+        sdef: sdef,
+        spd: spd,
+        type_1: type_1,
+        type_2: type_2,
+        moves: moves,
+      };
+
+      const token = req.headers["auth-token"];
+      let mail = "";
+      jwt.verify(token, SECRET, (err, decoded) => {
+        if (err) {
+          return res.status(401).json({ msg: "invalid token" });
+        }
+        return (mail = decoded.mail);
+      });
+      console.log(mail);
+
+      async function insertAndGetId(pokemon) {
+        return await knex
+          .insert(pokemon)
+          .returning(["pokemon_id"])
+          .into("pokemones");
+      }
+
+      async function getUserByMail(mail) {
+        return await knex.raw(
+          "select * from users u where u.mail = '" + mail + "';"
+        );
+      }
+
+      async function createPokemonRelation(pokemon_id, user_id) {
+        await knex
+          .insert({
+            pokemon_id: pokemon_id,
+            user_id: user_id,
+          })
+          .into("relation")
+          .then(response);
+      }
+
+      async function doEverything(pokemon, mail) {
+        const poke_id = await insertAndGetId(pokemon);
+        const user_id = await getUserByMail(mail);
+        console.log("empece a crear el pokemon");
+        createPokemonRelation(poke_id[0].pokemon_id, user_id.rows[0].users_id);
+      }
+
+      doEverything(pokemon, mail).then(() => {
+        return res.status(200).json({ cree: "hola" });
+      });
     })
     .catch((err) => {
       console.log(err);
