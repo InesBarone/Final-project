@@ -4,9 +4,10 @@ import Pokestats from "../../Components/Pokestats/Pokestats";
 import Error from "../Error/Error";
 import "./Pokebio.css";
 
-export default function Pokebio(pokeinfo) {
-  const [pokeinfo2, setPokeinfo2] = useState([]);
-  const [i, setI] = useState(0);
+export default function Pokebio() {
+  const [pokemon, setPokemon] = useState([]);
+  const [seeError, setSeeError] = useState(false);
+  const [pokeinfo, setPokeinfo] = useState([]);
 
   const params = useParams;
   const id = params().id;
@@ -39,7 +40,7 @@ export default function Pokebio(pokeinfo) {
         setPokeinfo(responseJSON);
       })
       .catch((err) => console.log(err));
-  }, [i]);
+  }, [id]);
 
   const background = {
     backgroundColor: `${pokemon.type_colour_1}`,
