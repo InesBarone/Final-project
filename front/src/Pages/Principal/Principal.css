@@ -19,8 +19,7 @@ h1 {
 
 .header-1 {
     margin: auto;
-    margin-left: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
