@@ -96,6 +96,13 @@ export default function Principal() {
 
   return (
     <div className="Principal-container">
+
+      <div className="button1">
+        <Link to="/">
+          <Button text="Cerrar sesión" onClick={deslogeo} />
+        </Link>
+      </div>
+      
       <header>
         <div className="header-1">
           <div className="logo-title">
@@ -126,9 +133,6 @@ export default function Principal() {
               <button className="arrow-button" onClick={reversePokeInfo}>
                 <img src={imgArrow} alt="arrow-button" className="arrow" />
               </button>
-              <Link to="/">
-                <Button text="Cerrar sesión" onClick={deslogeo} />
-              </Link>
             </div>
           )}
         </div>
@@ -141,7 +145,7 @@ export default function Principal() {
             margin: " auto ",
             borderRadius: "20px",
             textAlign: "center",
-            display: "flex" ,
+            display: "flex",
             alignItems: "center",
           }}
           type="search"

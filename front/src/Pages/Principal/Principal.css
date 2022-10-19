@@ -51,3 +51,9 @@ h1 {
     gap: 15px;
 }
 
+.button1{
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+}
+
