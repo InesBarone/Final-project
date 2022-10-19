@@ -6,8 +6,8 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "Admin1234",
-    database: "pokemones",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 

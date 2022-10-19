@@ -9,8 +9,8 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "Admin1234",
-    database: "pokemones",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 
@@ -156,4 +156,19 @@ exports.sharePokemon = function (req, res, next) {
   next();
 };
 
-exports.seePokemon = function (req, res, next) {};
+exports.seePokemon = function (req, res, next) {
+  const id = req.params.id;
+  knex
+    .raw(
+      "select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 where '" +
+        id +
+        "' = p.pokemon_id ;"
+    )
+    .then((resultado) => {
+      res.status(200).json(resultado.rows[0]);
+      next();
+    })
+    .catch((err) => {
+      res.status(404).json({ msg: "no encontrado" });
+    });
+};
