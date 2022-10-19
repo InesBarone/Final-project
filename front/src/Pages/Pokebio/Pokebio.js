@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Button from "../../Components/Button/button";
 import Pokestats from "../../Components/Pokestats/Pokestats";
 import Error from "../Error/Error";
 import "./Pokebio.css";
@@ -8,6 +9,8 @@ export default function Pokebio() {
   const [pokemon, setPokemon] = useState([]);
   const [seeError, setSeeError] = useState(false);
   const [pokeinfo, setPokeinfo] = useState([]);
+  const [link, setLink] = useState("");
+  const [display, setDisplay] = useState("none");
 
   const params = useParams;
   const id = params().id;
@@ -55,6 +58,10 @@ export default function Pokebio() {
     color: `${pokemon.type_colour_1}`,
   };
 
+  const index = pokeinfo.findIndex(
+    (pokemon) => pokemon.pokemon_id === parseInt(id)
+  );
+
   const changePokemonLeft = () => {
     if (!pokeinfo[0]) {
       return "0";
@@ -66,11 +73,6 @@ export default function Pokebio() {
     }
   };
 
-  const index = pokeinfo.findIndex(
-    (pokemon) => pokemon.pokemon_id === parseInt(id)
-  );
-  console.log(index);
-
   const changePokemonRight = () => {
     if (!pokeinfo[0]) {
       return "0";
@@ -80,6 +82,21 @@ export default function Pokebio() {
     } else {
       return `${pokeinfo[index + 1].pokemon_id}`;
     }
+  };
+
+  const handleSharePokemon = () => {
+    fetch(`http://localhost:3003/pokemones/share/${pokemon.pokemon_id}`, {
+      method: "GET",
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJSON) {
+        console.log(responseJSON.link);
+        setLink(responseJSON.link);
+        setDisplay("flex");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -123,6 +140,16 @@ export default function Pokebio() {
               aboutColor={aboutColor}
               pokeinfo={pokeinfo}
             />
+            <div className="share-container">
+              <Button text="Share" handleSharePokemon={handleSharePokemon} />
+              <input
+                type="text"
+                value={link}
+                className="link-input"
+                style={{ display: `${display}` }}
+                readonly
+              />
+            </div>
           </div>
         </div>
       )}
