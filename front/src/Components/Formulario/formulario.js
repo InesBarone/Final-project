@@ -14,48 +14,38 @@ export default function formulario() {
     }   
     return (
     <div>
+        <div className="General2">
         <form action="" className="formulario">
             <h1 className="formulario__titulo">
             Agregar Pokemon
             </h1>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Name</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Pokemon Image</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Weight</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Height</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Description</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">HP</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">ATK</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">DEF</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">SATK</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">SDEF</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">SPD</label>
-            <input type="text" className="formulario__input"/>
-            <label for="" 
-            className="formulario__label">Pokemon type</label>
+            <input type="text" placeholder="Name" className="formulario__input"/>
+             
+            <input type="text" placeholder="Pokemon Image" className="formulario__input"/>
+          
+            <input type="text" placeholder="Weight" className="formulario__input"/>
+           
+            <input type="text" placeholder="Height" className="formulario__input"/>
+        
+            <input type="text" placeholder="Description" className="formulario__input"/>
+         
+            <input type="text" placeholder="HP" className="formulario__input"/>
+          
+            <input type="text" placeholder="ATK" className="formulario__input"/>
+          
+            <input type="text" placeholder="DEF" className="formulario__input"/>
+            
+            <input type="text" placeholder="SATK" className="formulario__input"/>
+           
+            <input type="text" placeholder="SDEF" className="formulario__input"/>
+            
+            <input type="text" placeholder="SPD" className="formulario__input"/>
+          
+            <input type="text" placeholder="Pokemon type" className="formulario__input"/>
+          
             <input type="submit" className="formulario__submit"/>
         </form>
+        </div>
     </div>
     );
 } 

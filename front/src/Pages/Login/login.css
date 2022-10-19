@@ -10,7 +10,7 @@
 .login-box {
     width: 320px;
     height: 450px;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.95);
     color: #fff;
     top: 50%;
     left: 50%;
@@ -67,7 +67,7 @@
     outline: none;
     height: 40px;
     background-color: #b80f22;
-    color:  rgba(255, 255, 255, .8);
+    color:  white;
     font-size: 18px;
     border-radius: 20px;
 }

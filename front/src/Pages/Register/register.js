@@ -39,32 +39,29 @@ export default function Register() {
       });
   };
   return (
-    <div>
-      {mail}
-      {password}
+    <div className="General">
       <form action="" class="register">
         <h1 class="register__titulo">POKE-REGISTER</h1>
-        <p>Welcome to your Pokedex. Please register a new user</p>
+        <p>Welcome to your Pokedex. </p>
+        <p>Please register a new user</p>
+        
         <input
+          placeholder="Enter e-mail"
           type="mail"
           class="register__input"
           onChange={(e) => {
             setMail(e.target.value);
           }}
         />
-        <label for="" class="register__label">
-          Mail
-        </label>
+       
         <input
+          placeholder="Enter password"
           type="password"
           class="register__input"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
-        <label for="" class="register__label">
-          Password
-        </label>
         <input
           type="button"
           value="Send"

@@ -1,4 +1,5 @@
 .button-green button {
+<<<<<<< HEAD
     height: 40px;
     position: relative;
     padding: 10px 20px;
@@ -13,6 +14,23 @@
     overflow: hidden;
     transition: .3s;
     outline: none;
+=======
+  margin: 0 50px;
+  height: 35px;
+  position: relative;
+  padding: 10px 20px;
+  font-size: 12px;
+  border: none;
+  border-radius: 20px;
+  background: #b80f22;
+  color: rgba(255, 255, 255, 0.959);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: .3s;
+  outline: none;
+>>>>>>> 1b391d32ae2ece8943b303e32c024571672d462d
 }
 
 .button-green button span {
@@ -32,6 +50,6 @@
 
 .button-green button:hover {
     color: #c0e4da;
-    background: #f86f6f;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, .7);
+    background: #ff5858;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.315);
 }
