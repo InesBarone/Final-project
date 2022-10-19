@@ -40,6 +40,7 @@ export default function Register() {
   };
   return (
     <div className="General">
+       <img className="avatar" src="/Images/ball.png" alt="pokeball" />
       <form action="" class="register">
         <h1 class="register__titulo">POKE-REGISTER</h1>
         <p>Welcome to your Pokedex. </p>
