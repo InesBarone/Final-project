@@ -1,5 +1,6 @@
 .button-green button {
 <<<<<<< HEAD
+<<<<<<< HEAD
     height: 40px;
     position: relative;
     padding: 10px 20px;
@@ -15,8 +16,13 @@
     transition: .3s;
     outline: none;
 =======
+  /* margin: 0 50px; */
+  height: 40px;
+>>>>>>> ada08b1c4604e1d709951d3d86d02f960a4ec8d5
+=======
   margin: 0 50px;
   height: 35px;
+>>>>>>> 1b391d32ae2ece8943b303e32c024571672d462d
   position: relative;
   padding: 10px 20px;
   font-size: 12px;
