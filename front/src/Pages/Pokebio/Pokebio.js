@@ -141,7 +141,7 @@ export default function Pokebio() {
               pokeinfo={pokeinfo}
             />
             <div className="share-container">
-              <Button text="Share" handleSharePokemon={handleSharePokemon} />
+              <Button text="Share" onclick={handleSharePokemon} />
               <input
                 type="text"
                 value={link}
