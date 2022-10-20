@@ -1,37 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Poppins&display=swap');
 
-.Pokebio-container {
-    min-height: 111vh;
+.container-pokecomparte {
+    width:100%;
+    min-height: 100vh;
+}
+
+.Pokecomparte-container {
+    width:100%;
+    padding:2%;
+    min-height: 100vh;
+}
+
+.header-pokecomparte {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-pokecomparte-container {
+    width:80%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    padding: 2%;
 }
 
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height:8vh;
-    padding:2vh;
+.name-pokecomparte {
+    width:80%;
+    font-size: 25px;
+    color: white;
 }
 
-.arrow-name {
-    display: flex;
-    align-items: center;
+.name-pokecomparte-int {
+    width:80%;
+    font-size: 20px;
+    color: white;
+}
+
+.main-container {
     width:100%;
 }
 
-.arrow-left {
-    width:30px;
-    fill: currentColor white;
+.img-pokebola-pokecomparte {
+    opacity: 0.5;
+    position: relative;
+    left: 40%;
 }
 
-h1.name-pokemon {
-    font-size: 25px;
+.pokePhoto-container-pokecomparte {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    position: absolute;
+    top:110px;
+}
+
+.pokePhoto-pokecomparte {
+    max-width: 300px;
+}
+
+.poke-stats-pokecomparte {
+    background-color: white;
+    padding: 5%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.arrow-button2 {
+    background:none;
+    border: none;
     color: white;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .id {
@@ -42,72 +81,4 @@ h1.name-pokemon {
     font-size: 16px;
     color:white;
     font-family: 'Poppins', sans-serif;
-}
-
-.pokePhoto-container {
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    position: absolute;
-    top: 12vh;
-    height:25vh;
-    z-index:2;
-    align-items: center;
-}
-.arrow-button2 {
-    background:none;
-    border: none;
-    color: white;
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-.img-pokebola {
-    position: absolute;
-    top: 35px;
-    right:5%;
-    opacity: 0.2;
-}
-
-.pokePhoto {
-    max-width: 300px;
-}
-
-.container-poke {
-    position: relative;
-    min-height: 100vh;
-}
-
-.poke-stats {
-    position: absolute;
-    width:97%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 5%;
-    font-family: 'Poppins', sans-serif;
-    height:80vh;
-    top: 30vh;
-}
-
-.share-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.link-input {
-    width:80%;
-    font-size: 12px;
-    height: 20px;
-}
-
-@media (min-width:400px) {
-    .pokePhoto {
-        position: relative;
-        top:-30px    }
-        .img-pokebola {
-            left:60%;
-        }
 }
