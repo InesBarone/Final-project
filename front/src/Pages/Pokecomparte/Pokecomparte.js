@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Pokestats from "../../Components/Pokestats/Pokestats";
 import "./Pokecomparte.css";
@@ -45,16 +46,22 @@ export default function Pokecomparte() {
           </div>
           <div className="id">{pokemon.id}</div>
         </div>
+        <div className="main-container">
+          <img
+            src="/Images/Pokeball (1).png"
+            className="img-pokebola-pokecomparte"
+          />
+          <div className="poke-stats-pokecomparte">
+            <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
+          </div>
+        </div>
+      </div>
+      <div className="pokePhoto-container-pokecomparte">
         <img
-          src="/Images/Pokeball (1).png"
-          className="img-pokebola-pokecomparte"
+          src={pokemon.img}
+          alt="Pokemon picture"
+          className="pokePhoto-pokecomparte"
         />
-        <div className="pokePhoto-container-pokecomparte">
-          <img src={pokemon.img} alt="Pokemon picture" className="pokePhoto" />
-        </div>
-        <div className="poke-stats-pokecomparte">
-          <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
-        </div>
       </div>
     </div>
   );
