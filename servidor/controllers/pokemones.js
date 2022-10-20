@@ -82,6 +82,24 @@ exports.createPokemon = function (req, res, next) {
       const type_1 = req.body.type_1;
       const type_2 = req.body.type_2;
       const moves = req.body.moves;
+      if (
+        name.length < 1 ||
+        img.length < 1 ||
+        weight.length < 1 ||
+        height.length < 1 ||
+        description.length < 1 ||
+        hp.pength < 1 ||
+        atk.length < 1 ||
+        def.length < 1 ||
+        satklength < 1 ||
+        sdef.length < 1 ||
+        spd.length < 1 ||
+        type_1.length < 1 ||
+        moves.length < 1
+      ) {
+        res.status(400).json({ msg: "all fields are required" });
+        return next();
+      }
       pokemon = {
         poke_number: number,
         id: id,

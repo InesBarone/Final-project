@@ -6,6 +6,7 @@
 .Pokecomparte-container {
     width:100%;
     padding:2%;
+    min-height: 100vh;
 }
 
 .header-pokecomparte {
@@ -31,8 +32,14 @@
     color: white;
 }
 
+.main-container {
+    width:100%;
+}
+
 .img-pokebola-pokecomparte {
-    opacity: 0.5
+    opacity: 0.5;
+    position: relative;
+    left: 40%;
 }
 
 .pokePhoto-container-pokecomparte {
@@ -41,10 +48,17 @@
     justify-content: center;
     align-items: center;
     z-index: 5;
+    position: absolute;
+    top:170px;
+}
+
+.pokePhoto-pokecomparte {
+    max-width: 300px;
 }
 
 .poke-stats-pokecomparte {
     background-color: white;
     padding: 5%;
     border-radius: 10px;
+    position: relative;
 }
