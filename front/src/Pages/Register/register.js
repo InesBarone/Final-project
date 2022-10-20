@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
+import Button from "../../Components/Button/button";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [mail, setMail] = useState("");
@@ -40,12 +42,11 @@ export default function Register() {
   };
   return (
     <div className="General">
-       <img className="avatar" src="/Images/ball.png" alt="pokeball" />
       <form action="" class="register">
         <h1 class="register__titulo">POKE-REGISTER</h1>
         <p>Welcome to your Pokedex. </p>
         <p>Please register a new user</p>
-        
+
         <input
           placeholder="Enter e-mail"
           type="mail"
@@ -54,7 +55,7 @@ export default function Register() {
             setMail(e.target.value);
           }}
         />
-       
+
         <input
           placeholder="Enter password"
           type="password"
@@ -63,6 +64,7 @@ export default function Register() {
             setPassword(e.target.value);
           }}
         />
+     
         <input
           type="button"
           value="Send"
@@ -71,6 +73,12 @@ export default function Register() {
             handleRegister(mail, password);
           }}
         ></input>
+         ¡
+        <div className="ButtonRegister">
+          <Link to={"/"}>
+            <Button text={"back login"} />
+          </Link>
+        </div>
       </form>
     </div>
   );

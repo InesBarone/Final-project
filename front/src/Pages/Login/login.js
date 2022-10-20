@@ -30,7 +30,7 @@ function Login({ i }) {
           navigate("/principal");
         }
         else {
-          navigate("/error404");
+          navigate(null);
         }
       })
       .catch((err) => {
@@ -38,12 +38,9 @@ function Login({ i }) {
       });
   };
 
-
-
   return (
     <div className="container-login">
       <div className="login-box">
-        <img className="avatar" src="/Images/ball.png" alt="pokeball" />
         <h1>Login here</h1>
         <form>
           <label for="email">Mail</label>
@@ -64,6 +61,7 @@ function Login({ i }) {
             }}
           ></input>
 
+
           <input
             text="Log In"
             type="submit"
@@ -73,7 +71,7 @@ function Login({ i }) {
               loguearse(mail, password);
             }}
           />
-          <p>If you dont have a user please create an account.</p>
+          <p>¡If you dont have a user please create an account!</p>
           <div className="register-button">
             <Link to="/register">
               <Button text="REGISTER" />

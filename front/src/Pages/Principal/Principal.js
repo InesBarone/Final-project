@@ -96,12 +96,7 @@ export default function Principal() {
 
   return (
     <div className="Principal-container">
-      <div className="button1">
-        <Link to="/">
-          <Button text="Cerrar sesión" onclick={deslogeo} />
-        </Link>
-      </div>
-
+    
       <header>
         <div className="header-1">
           <div className="logo-title">
@@ -156,6 +151,11 @@ export default function Principal() {
       <main>
         <Pokecard text={text} pokeinfo={pokeinfo} />
       </main>
+      <div className="button1">
+        <Link to="/">
+          <Button text="Log Out" onclick={deslogeo} />
+        </Link>
+      </div>
     </div>
   );
 }
