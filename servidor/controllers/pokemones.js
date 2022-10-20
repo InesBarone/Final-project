@@ -82,6 +82,24 @@ exports.createPokemon = function (req, res, next) {
       const type_1 = req.body.type_1;
       const type_2 = req.body.type_2;
       const moves = req.body.moves;
+      if (
+        name.length < 1 ||
+        img.length < 1 ||
+        weight.length < 1 ||
+        height.length < 1 ||
+        description.length < 1 ||
+        hp.pength < 1 ||
+        atk.length < 1 ||
+        def.length < 1 ||
+        satklength < 1 ||
+        sdef.length < 1 ||
+        spd.length < 1 ||
+        type_1.length < 1 ||
+        moves.length < 1
+      ) {
+        res.status(400).json({ msg: "all fields are required" });
+        return next();
+      }
       pokemon = {
         poke_number: number,
         id: id,
@@ -156,4 +174,19 @@ exports.sharePokemon = function (req, res, next) {
   next();
 };
 
-exports.seePokemon = function (req, res, next) {};
+exports.seePokemon = function (req, res, next) {
+  const id = req.params.id;
+  knex
+    .raw(
+      "select * from pokemones p join ( select id_type as id_type_1, type_name as type_name_1, type_colour as type_colour_1 from types_and_colours tac ) as t on p.type_1 = t.id_type_1 join ( select id_type as id_type_2, type_name as type_name_2, type_colour as type_colour_2 from types_and_colours tac ) as t2 on p.type_2 = t2.id_type_2 where '" +
+        id +
+        "' = p.pokemon_id ;"
+    )
+    .then((resultado) => {
+      res.status(200).json(resultado.rows[0]);
+      next();
+    })
+    .catch((err) => {
+      res.status(404).json({ msg: "no encontrado" });
+    });
+};

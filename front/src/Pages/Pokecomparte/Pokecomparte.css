@@ -1,0 +1,64 @@
+.container-pokecomparte {
+    width:100%;
+    min-height: 100vh;
+}
+
+.Pokecomparte-container {
+    width:100%;
+    padding:2%;
+    min-height: 100vh;
+}
+
+.header-pokecomparte {
+    display: flex;
+    flex-direction: row;
+}
+
+.name-pokecomparte-container {
+    width:80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.name-pokecomparte {
+    width:80%;
+    font-size: 25px;
+    color: white;
+}
+
+.name-pokecomparte-int {
+    width:80%;
+    font-size: 20px;
+    color: white;
+}
+
+.main-container {
+    width:100%;
+}
+
+.img-pokebola-pokecomparte {
+    opacity: 0.5;
+    position: relative;
+    left: 40%;
+}
+
+.pokePhoto-container-pokecomparte {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    position: absolute;
+    top:170px;
+}
+
+.pokePhoto-pokecomparte {
+    max-width: 300px;
+}
+
+.poke-stats-pokecomparte {
+    background-color: white;
+    padding: 5%;
+    border-radius: 10px;
+    position: relative;
+}

@@ -92,10 +92,16 @@ export default function Principal() {
 
   const deslogeo = () => {
     localStorage.removeItem("auth-token");
-  }
+  };
 
   return (
     <div className="Principal-container">
+      <div className="button1">
+        <Link to="/">
+          <Button text="Cerrar sesión" onclick={deslogeo} />
+        </Link>
+      </div>
+
       <header>
         <div className="header-1">
           <div className="logo-title">
@@ -105,9 +111,6 @@ export default function Principal() {
               alt="Logo pokebola"
             />
             <h1>Pokedex</h1>
-            <Link to="/"> 
-            <Button text="Cerrar sesión" onClick={deslogeo}/>
-            </Link>
           </div>
           {order ? (
             <div style={{ display: "flex" }}>
@@ -133,6 +136,17 @@ export default function Principal() {
           )}
         </div>
         <input
+          style={{
+            color: "black",
+            fontSize: "15px",
+            width: "50%",
+            height: "30px",
+            margin: " auto ",
+            borderRadius: "20px",
+            textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+          }}
           type="search"
           placeholder="🔎 Search Pokemon"
           className="formulario__input"

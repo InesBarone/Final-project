@@ -18,20 +18,27 @@ h1 {
 }
 
 .header-1 {
+    margin: auto;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
+
 
 .arrow-button {
     display: flex;
     align-items: center;
     border:none;
-    background-color: rgb(99, 64, 64);
+    background-color: rgb(255, 255, 255);
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 15px;
     cursor: pointer;
+}
+
+.arrow-button p{
+    color: black;
 }
 
 .arrow {
@@ -44,11 +51,9 @@ h1 {
     gap: 15px;
 }
 
-.search-bar {
-    width: 100%;
-    margin: 5px 0px;
-    border-radius: 8px;
-    height:30px;
-    border: 1.5px solid rgb(255, 255, 255);
-    text-align: center;
+.button1{
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
 }
+
