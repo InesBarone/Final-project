@@ -112,9 +112,20 @@ export default function Pokebio() {
           <img
             src="/Images/Pokeball (1).png"
             className="img-pokebola-pokecomparte"
+            alt="img-pokebola"
           />
           <div className="poke-stats-pokecomparte">
             <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
+          <div className="share-container">
+              <Button text="Share" onclick={handleSharePokemon} />
+              <input
+                type="text"
+                value={link}
+                className="link-input"
+                style={{ display: `${display}` }}
+                readonly
+              />
+        </div>
           </div>
         </div>
       </div>
@@ -124,7 +135,7 @@ export default function Pokebio() {
         </Link>
         <img
           src={pokemon.img}
-          alt="Pokemon picture"
+          alt="pokepicture"
           className="pokePhoto-pokecomparte"
         />
         <Link to={`/pokemon/${changePokemonRight()}`}>
@@ -133,6 +144,7 @@ export default function Pokebio() {
           </button>
         </Link>
       </div>
+      
     </div>
   );
 }
