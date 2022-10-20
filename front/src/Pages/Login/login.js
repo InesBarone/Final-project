@@ -30,7 +30,7 @@ function Login({ i }) {
           navigate("/principal");
         }
         else {
-          navigate(null);
+          navigate(alert("All refier are requiere"));
         }
       })
       .catch((err) => {
