@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Button from "../../Components/Button/button";
 import Pokestats from "../../Components/Pokestats/Pokestats";
-import Error from "../Error/Error";
 import "./Pokebio.css";
 
 export default function Pokebio() {
@@ -14,7 +13,7 @@ export default function Pokebio() {
 
   const params = useParams;
   const id = params().id;
-
+  let navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:3003/pokemones/${id}`, {
       method: "GET",
@@ -28,10 +27,14 @@ export default function Pokebio() {
         return response.json();
       })
       .then(function (responseJSON) {
-        setSeeError(false);
-        setPokemon(responseJSON[0]);
+        console.log(responseJSON);
+        if (responseJSON.err) {
+          navigate("/error404")
+        } else {
+          setPokemon(responseJSON[0]);
+        }
       })
-      .catch((err) => setSeeError(true));
+      .catch((err) => console.log(err));
 
     fetch("http://localhost:3003/pokemones", {
       method: "GET",
@@ -100,51 +103,50 @@ export default function Pokebio() {
   };
 
   return (
-    <div className="container-pokecomparte">
-      <div className="Pokecomparte-container" style={background}>
-        <div className="header-pokecomparte">
-          <div className="name-pokecomparte-container">
-            <h1 className="name-pokecomparte">{pokemon.name}</h1>
-          </div>
-          <div className="id">{pokemon.id}</div>
-        </div>
-        <div className="main-container">
-          <img
-            src="/Images/Pokeball (1).png"
-            className="img-pokebola-pokecomparte"
-            alt="img-pokebola"
-          />
-          <div className="poke-stats-pokecomparte">
-            <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
-          <div className="share-container">
-              <Button text="Share" onclick={handleSharePokemon} />
-              <input
-                type="text"
-                value={link}
-                className="link-input"
-                style={{ display: `${display}` }}
-                readonly
+        <div className="container-pokecomparte">
+          <div className="Pokecomparte-container" style={background}>
+            <div className="header-pokecomparte">
+              <div className="name-pokecomparte-container">
+                <h1 className="name-pokecomparte">{pokemon.name}</h1>
+              </div>
+              <div className="id">{pokemon.id}</div>
+            </div>
+            <div className="main-container">
+              <img
+                src="/Images/Pokeball (1).png"
+                className="img-pokebola-pokecomparte"
+                alt="img-pokebola"
               />
-        </div>
+              <div className="poke-stats-pokecomparte">
+                <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
+                <div className="share-container">
+                  <Button text="Share" onclick={handleSharePokemon} />
+                  <input
+                    type="text"
+                    value={link}
+                    className="link-input"
+                    style={{ display: `${display}` }}
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="pokePhoto-container-pokecomparte">
+            <Link to={`/pokemon/${changePokemonLeft()}`}>
+              <button className="arrow-button2">{"<"}</button>
+            </Link>
+            <img
+              src={pokemon.img}
+              alt="pokepicture"
+              className="pokePhoto-pokecomparte"
+            />
+            <Link to={`/pokemon/${changePokemonRight()}`}>
+              <button className="arrow-button2" style={{ color: `` }}>
+                {">"}
+              </button>
+            </Link>
           </div>
         </div>
-      </div>
-      <div className="pokePhoto-container-pokecomparte">
-        <Link to={`/pokemon/${changePokemonLeft()}`}>
-          <button className="arrow-button2">{"<"}</button>
-        </Link>
-        <img
-          src={pokemon.img}
-          alt="pokepicture"
-          className="pokePhoto-pokecomparte"
-        />
-        <Link to={`/pokemon/${changePokemonRight()}`}>
-          <button className="arrow-button2" style={{ color: `` }}>
-            {">"}
-          </button>
-        </Link>
-      </div>
-      
-    </div>
   );
 }
