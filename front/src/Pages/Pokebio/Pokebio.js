@@ -85,19 +85,32 @@ export default function Pokebio() {
   };
 
   const handleSharePokemon = () => {
-    fetch(`http://localhost:3003/pokemones/share/${pokemon.pokemon_id}`, {
+    const newId = pokemon.pokemon_id
+    console.log(newId)
+    fetch(`http://localhost:3003/pokemones/share/${newId}`, {
       method: "GET",
     })
       .then(function (response) {
         return response.json();
       })
       .then(function (responseJSON) {
-        console.log(responseJSON.link);
+        
         setLink(responseJSON.link);
         setDisplay("flex");
       })
       .catch((err) => console.log(err));
   };
+
+  const copiarAlPortaPapeles = () => {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", link);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+
+    alert ("se copio al portapapeles")
+  }
 
   return (
     <div className="container-pokecomparte">
@@ -125,6 +138,7 @@ export default function Pokebio() {
                 style={{ display: `${display}` }}
                 readonly
               />
+              <Button text="Copy" onclick={copiarAlPortaPapeles}></Button>
         </div>
           </div>
         </div>
