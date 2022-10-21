@@ -20,7 +20,7 @@ function Login({ i }) {
         mail: mail,
         password: password,
       }),
-    })
+    })     
       .then((r) => {
         return r.json();
       })
@@ -30,7 +30,7 @@ function Login({ i }) {
           navigate("/principal");
         }
         else {
-          navigate(alert("All refier are requiere"));
+          navigate("/error400");
         }
       })
       .catch((err) => {

@@ -16,7 +16,7 @@ return(
         
        <h2 className="h2404">Uh-Oh!</h2>
      <p className="p404">Not found</p>
-     <Link to="/">
+     <Link to="/principal">
      <Button text="Go back Home ←"/>
      </Link>
    </div>
