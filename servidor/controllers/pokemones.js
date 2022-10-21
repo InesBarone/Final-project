@@ -46,11 +46,16 @@ exports.onePokemon = function (req, res, next) {
         "' = rel.pokemon_id ;"
     )
     .then((resultado) => {
-      res.status(200).json(resultado.rows);
+      if(resultado.rows.length > 0){
+          res.status(200).json(resultado.rows);
       next();
+      } else{
+         res.status(401).json({err: "Pokemon no existe"});
+      next();
+      }
     })
     .catch((err) => {
-      res.status(404).json({ msg: "no encontrado" });
+      res.status(404).json({ err: "Error conexion base de datos" });
     });
 };
 
