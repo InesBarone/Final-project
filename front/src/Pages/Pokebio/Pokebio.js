@@ -116,7 +116,7 @@ export default function Pokebio() {
           />
           <div className="poke-stats-pokecomparte">
             <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
-          <div className="share-container">
+            <div className="share-container">
               <Button text="Share" onclick={handleSharePokemon} />
               <input
                 type="text"
@@ -125,7 +125,7 @@ export default function Pokebio() {
                 style={{ display: `${display}` }}
                 readonly
               />
-        </div>
+            </div>
           </div>
         </div>
       </div>
@@ -144,7 +144,6 @@ export default function Pokebio() {
           </button>
         </Link>
       </div>
-      
     </div>
   );
 }

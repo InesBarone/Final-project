@@ -9,8 +9,8 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "zxcvbnm1",
-    database: "postgres",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 
@@ -155,12 +155,11 @@ exports.createPokemon = function (req, res, next) {
       async function doEverything(pokemon, mail) {
         const poke_id = await insertAndGetId(pokemon);
         const user_id = await getUserByMail(mail);
-        console.log("empece a crear el pokemon");
         createPokemonRelation(poke_id[0].pokemon_id, user_id.rows[0].users_id);
       }
 
       doEverything(pokemon, mail).then(() => {
-        return res.status(200).json({ cree: "hola" });
+        return res.status(200).json({ msg: "pokemon creado" });
       });
     })
     .catch((err) => {
@@ -169,7 +168,7 @@ exports.createPokemon = function (req, res, next) {
 };
 
 exports.sharePokemon = function (req, res, next) {
-  const id = req.body.id;
+  const id = req.params.id;
   res.status(200).json({ link: `http://localhost:3000/pokemones/share/${id}` });
   next();
 };

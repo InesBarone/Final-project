@@ -6,8 +6,8 @@ const knex = require("knex")({
     host: "localhost",
     port: 5432,
     user: "postgres",
-    password: "zxcvbnm1",
-    database: "postgres",
+    password: "holaprog",
+    database: "pokedata",
   },
 });
 
@@ -23,7 +23,7 @@ router.post("/register", (req, res, next) => {
   const userPassword = req.body.password;
 
   if (userMail.length < 1 || userMail === null) {
-    res.status(400).json({ msg: "name is required" });
+    res.status(400).json({ msg: "mail is required" });
     next();
   } else if (userPassword.length < 1 || userPassword === null) {
     res.status(400).json({ msg: "password is required" });

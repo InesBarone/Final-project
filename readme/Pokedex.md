@@ -21,7 +21,6 @@
 ```json
 {
   "pokemon_id": 1,
-  "id": "001",
   "poke_number": 1,
   "name": "Bulbasaur",
   "img": "/Images/bulbasaur.png",
@@ -37,16 +36,62 @@
   "type_1": 1,
   "type_2": 2,
   "moves": "Compound-Eyes, Tinted-Lens",
-  "id_type_1": 1,
-  "type_name_1": "Grass",
-  "type_colour_1": "#74CB48",
-  "id_type_2": 2,
-  "type_name_2": "Poison",
-  "type_colour_2": "#A43E9E"
+  "id": "#001"
 }
 ```
 
 ## Users
+
+- `Como usuario puedo registrarme`
+
+#### `POST: /register`
+
+Formato: **JSON**  
+ Status:
+
+**Request:**
+
+```json
+{
+  "mail": "pepito@gmail.com",
+  "password": "passworduser"
+}
+```
+
+**Response:**
+
+- Si mail no existe en base de datos y mail y password son distintos de vacio: **200 OK**
+
+```json
+{
+  "mail": "pepito@gmail.com",
+  "password": "passworduser"
+}
+```
+
+- Si mail ya existe: **400 Bad Request**
+
+```json
+{ "msg": "There is a user with this email" }
+```
+
+- Mail es vacio: **400 Bad Request**
+
+```json
+{ "msg": "mail is required" }
+```
+
+- Password es vacio: **400 Bad Request**
+
+```json
+{ "msg": "password is required" }
+```
+
+- Password y mail es vacio: **400 Bad Request**
+
+```json
+{ "msg": "name and password is required" }
+```
 
 - `Como usuario puedo iniciar sesion`
 
@@ -83,7 +128,6 @@ Status: **200 OK**
 [
   {
     "pokemon_id": 1,
-    "id": "001",
     "poke_number": 1,
     "name": "Bulbasaur",
     "img": "/Images/bulbasaur.png",
@@ -99,6 +143,7 @@ Status: **200 OK**
     "type_1": 1,
     "type_2": 2,
     "moves": "Compound-Eyes, Tinted-Lens",
+    "id": "#001",
     "id_type_1": 1,
     "type_name_1": "Grass",
     "type_colour_1": "#74CB48",
@@ -120,7 +165,6 @@ Status: **200 OK**
 ```json
 {
   "pokemon_id": 1,
-  "id": "001",
   "poke_number": 1,
   "name": "Bulbasaur",
   "img": "/Images/bulbasaur.png",
@@ -136,6 +180,7 @@ Status: **200 OK**
   "type_1": 1,
   "type_2": 2,
   "moves": "Compound-Eyes, Tinted-Lens",
+  "id": "#001",
   "id_type_1": 1,
   "type_name_1": "Grass",
   "type_colour_1": "#74CB48",
@@ -165,50 +210,24 @@ Status: **200 OK**
   "sdef": "080",
   "spd": "070",
   "type_1": 1,
-  "type_2": 2,
-  "moves": "Compound-Eyes, Tinted-Lens",
-  "id_type_1": 1,
-  "type_name_1": "Grass",
-  "type_colour_1": "#74CB48",
-  "id_type_2": 2,
-  "type_name_2": "Poison",
-  "type_colour_2": "#A43E9E"
+  "type_2": 0,
+  "moves": "Compound-Eyes, Tinted-Lens"
 }
 ```
 
 Status:
 
 - Si el pokemon es creado **200 CREATED**
-- Si el pokemon tiene errores en la validacion de sus campos: **400 Bad Request**
-
-**Response**
+  **Response**
 
 ```json
-{
-  "pokemon_id": 1,
-  "id": "001",
-  "poke_number": 1,
-  "name": "Bulbasaur",
-  "img": "/Images/bulbasaur.png",
-  "weight": "6.9 kg",
-  "height": "0.7 m",
-  "description": "There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows larger.",
-  "hp": "060",
-  "atk": "045",
-  "def": "050",
-  "satk": "090",
-  "sdef": "080",
-  "spd": "070",
-  "type_1": 1,
-  "type_2": 2,
-  "moves": "Compound-Eyes, Tinted-Lens",
-  "id_type_1": 1,
-  "type_name_1": "Grass",
-  "type_colour_1": "#74CB48",
-  "id_type_2": 2,
-  "type_name_2": "Poison",
-  "type_colour_2": "#A43E9E"
-}
+{ "msg": "pokemon creado" }
+```
+
+- Si el pokemon tiene errores en la validacion de sus campos: **400 Bad Request**
+
+```json
+{ "msg": "all fields are required" }
 ```
 
 - Como usuario quiero poder compartir un pokemon
@@ -231,14 +250,14 @@ Status: **200 OK**
 
 ```json
 {
-  "link": "http://localhost:3003/pokemones/compartir/name"
+  "link": "http://localhost:3003/pokemones/share/id"
 }
 ```
 
 - Como usuario quiero poder ver un pokemon
   compartido por otro usuario
 
-#### `GET: /pokemones/:pokemon_id` Ver pokemon compartido
+#### `GET: /pokemones/see/:pokemon_id` Ver pokemon compartido
 
 Formato: **JSON**
 
@@ -247,7 +266,6 @@ Status: **200 OK**
 ```json
 {
   "pokemon_id": 1,
-  "id": "001",
   "poke_number": 1,
   "name": "Bulbasaur",
   "img": "/Images/bulbasaur.png",
@@ -263,11 +281,6 @@ Status: **200 OK**
   "type_1": 1,
   "type_2": 2,
   "moves": "Compound-Eyes, Tinted-Lens",
-  "id_type_1": 1,
-  "type_name_1": "Grass",
-  "type_colour_1": "#74CB48",
-  "id_type_2": 2,
-  "type_name_2": "Poison",
-  "type_colour_2": "#A43E9E"
+  "id": "#001"
 }
 ```
