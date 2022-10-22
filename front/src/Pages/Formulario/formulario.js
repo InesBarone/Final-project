@@ -22,6 +22,7 @@ export default function Formulario() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
       },
       body: JSON.stringify({
         name: newName,
@@ -62,108 +63,100 @@ export default function Formulario() {
     });
   }
   return (
-    <div>
+    <div className="General3">
       <form action="" className="formulario">
         <h1 className="formulario__titulo">Agregar Pokemon</h1>
+
         <input
+          placeholder="Name"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewName(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          Name
-        </label>
+
         <input
+          placeholder="Pokemon Image"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewImg(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          Pokemon Image
-        </label>
+
         <input
+          placeholder="Weight"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewWeight(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          Weight
-        </label>
+
         <input
+          placeholder="Height"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewHeight(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          Height
-        </label>
+
         <input
+          placeholder="Description"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewDescription(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          Description
-        </label>
+
         <input
+          placeholder="HP"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewHP(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          HP
-        </label>
+
         <input
+          placeholder="ATK"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewATK(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          ATK
-        </label>
+
         <input
+          placeholder="DEF"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewDEF(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          DEF
-        </label>
+
         <input
+          placeholder="SATK"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewSATK(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          SATK
-        </label>
+
         <input
+          placeholder="SDEF"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewSDEF(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          SDEF
-        </label>
+
         <input
+          placeholder="SPD"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewSPD(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          SPD
-        </label>
+
         <input
+          placeholder="Moves"
           type="text"
           className="formulario__input"
           onChange={(e) => setnewMoves(e.target.value)}
         />
-        <label for="" className="formulario__label">
-          Moves
-        </label>
+        <h3 className="H3Type">POKEMON TYPE</h3>
+
         <form className="type_form">
-          Pokemon type
-          <select onChange={(e) => setnewType(e.target.value)}>
+          <select
+            className="Selectformulario"
+            onChange={(e) => setnewType(e.target.value)}
+          >
             <option disabled>Select Pokemon type</option>
             <option value="2">Poison</option>
             <option value="12">Electric</option>
@@ -173,6 +166,7 @@ export default function Formulario() {
             <option value="10">Ghost</option>
           </select>
         </form>
+
         <input
           type="button"
           value="Send"

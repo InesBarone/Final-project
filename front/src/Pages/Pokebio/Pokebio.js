@@ -1,92 +1,176 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import Button from "../../Components/Button/button";
 import Pokestats from "../../Components/Pokestats/Pokestats";
 import "./Pokebio.css";
 
-export default function Pokebio(pokeinfo) {
-  const [pokeinfo2, setPokeinfo2] = useState([]);
-  const [i, setI] = useState(0);
+export default function Pokebio() {
+  const [pokemon, setPokemon] = useState([]);
+  const [seeButton, setSeeButton] = useState(false);
+  const [pokeinfo, setPokeinfo] = useState([]);
+  const [link, setLink] = useState("");
+  const [display, setDisplay] = useState("none");
 
   const params = useParams;
   const id = params().id;
-  console.log(pokeinfo2);
+  let navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:3003/pokemones/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJSON) {
+        console.log(responseJSON);
+        if (responseJSON.err) {
+          navigate("/error404");
+        } else {
+          setPokemon(responseJSON[0]);
+        }
+      })
+      .catch((err) => console.log(err));
+
+    fetch("http://localhost:3003/pokemones", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
+      },
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (responseJSON) {
+        setPokeinfo(responseJSON);
+      })
+      .catch((err) => console.log(err));
+  }, [id]);
+
+  const background = {
+    backgroundColor: `${pokemon.type_colour_1}`,
+  };
+
+  const aboutColor = {
+    color: `${pokemon.type_colour_1}`,
+  };
+
+  const index = pokeinfo.findIndex(
+    (pokemon) => pokemon.pokemon_id === parseInt(id)
+  );
+
+  const changePokemonLeft = () => {
+    if (!pokeinfo[0]) {
+      return "0";
+    }
+    if (index === 0) {
+      return `${pokeinfo[pokeinfo.length - 1].pokemon_id}`;
+    } else {
+      return `${pokeinfo[index - 1].pokemon_id}`;
+    }
+  };
+
+  const changePokemonRight = () => {
+    if (!pokeinfo[0]) {
+      return "0";
+    }
+    if (index === pokeinfo.length - 1) {
+      return `${pokeinfo[0].pokemon_id}`;
+    } else {
+      return `${pokeinfo[index + 1].pokemon_id}`;
+    }
+  };
+
+  const handleSharePokemon = () => {
+    const newId = pokemon.pokemon_id;
+    console.log(newId);
+    fetch(`http://localhost:3003/pokemones/share/${newId}`, {
       method: "GET",
     })
       .then(function (response) {
         return response.json();
       })
       .then(function (responseJSON) {
-        setPokeinfo2(responseJSON[0]);
+        setLink(responseJSON.link);
+        setDisplay("flex");
+        setSeeButton(true);
       })
       .catch((err) => console.log(err));
-  }, [i]);
-
-  const background = {
-    backgroundColor: `${pokeinfo2.type_colour_1}`,
   };
 
-  const aboutColor = {
-    color: `${pokeinfo2.type_colour_1}`,
+  const copiarAlPortaPapeles = () => {
+    var aux = document.createElement("input");
+    aux.setAttribute("value", link);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+
+    alert("se copio al portapapeles");
   };
-
-
-  // let index = pokeinfo2.indexOf(pokeinfo2);
-  // const changePokemonLeft = () => {
-  //   if (index === 0) {
-  //     return `${pokeinfo2[pokeinfo2.length - 1].name}`;
-  //   } else {
-  //     return `${pokeinfo2[index - 1].name}`;
-  //   }
-  // };
-
-  // const changePokemonRight = () => {
-  //   if (index === pokeinfo2.length - 1) {
-  //     return `${pokeinfo2.name}`;
-  //   } else {
-  //     return `${pokeinfo2[index + 1].name}`;
-  //   }
-  // };
 
   return (
-    <div>
-      <div className="Pokebio-container" style={background}>
-        <div className="header">
-          <img src="/Images/Pokeball (1).png" className="img-pokebola" />
+    <div className="container-pokecomparte">
+      <div className="Pokecomparte-container" style={background}>
+        <div className="header-pokecomparte">
           <div className="arrow-name">
-            <Link to="/">
+            <Link to="/principal">
               <img
                 src="/Images/arrow-left-w.svg"
                 className="arrow-left"
                 alt="Arrow left"
               />
             </Link>
-            <h1 className="name-pokemon">{pokeinfo2.name}</h1>
           </div>
-          <div className="id">{pokeinfo2.pokemon_id}</div>
+          <div className="name-pokecomparte-container">
+            <h1 className="name-pokecomparte">{pokemon.name}</h1>
+          </div>
+          <div className="id">{pokemon.id}</div>
         </div>
-        <div className="pokePhoto-container">
-          {/* <Link to={`/pokemon/${changePokemonLeft()}`}>
-            <button className="arrow-button2">{"<"}</button>
-          </Link> */}
+        <div className="main-container">
           <img
-            src={pokeinfo2.img}
-            alt="Pokemon picture"
-            className="pokePhoto"
+            src="/Images/Pokeball (1).png"
+            className="img-pokebola-pokecomparte"
+            alt="img-pokebola"
           />
-          {/* <Link to={`/pokemon/${changePokemonRight()}`}>
-            <button className="arrow-button2" style={{ color: `` }}>
-              {">"}
-            </button>
-          </Link> */}
+          <div className="poke-stats-pokecomparte">
+            <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
+            <div className="share-container">
+              <Button text="Share" onclick={handleSharePokemon} />
+              <input
+                type="text"
+                value={link}
+                className="link-input"
+                style={{ display: `${display}` }}
+                readonly
+              />
+              {seeButton ? (
+                <Button text="Copy link" onclick={copiarAlPortaPapeles} />
+              ) : null}
+            </div>
+          </div>
         </div>
-        <Pokestats
-          pokeinfo2={pokeinfo2}
-          aboutColor={aboutColor}
-          pokeinfo={pokeinfo}
+      </div>
+      <div className="pokePhoto-container-pokecomparte">
+        <Link to={`/pokemon/${changePokemonLeft()}`}>
+          <button className="arrow-button2">{"<"}</button>
+        </Link>
+        <img
+          src={pokemon.img}
+          alt="pokepicture"
+          className="pokePhoto-pokecomparte"
         />
+        <Link to={`/pokemon/${changePokemonRight()}`}>
+          <button className="arrow-button2" style={{ color: `` }}>
+            {">"}
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -7,6 +7,9 @@ import { useEffect, useState } from "react";
 import Login from "./Pages/Login/login";
 import Formulario from "./Pages/Formulario/formulario";
 import Register from "./Pages/Register/register";
+import Error404 from "./Pages/Error404/error404";
+import Pokecomparte from "./Pages/Pokecomparte/Pokecomparte";
+import Error400 from "./Pages/Error400/Erro2r";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
           <Route path="/pokemon/:id" element={<Pokebio />} />
           <Route path="/formulario" element={<Formulario />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/error404" element={<Error404 />}></Route>
+          <Route path="/error400" element={<Error400 />}></Route>
+          <Route path="/pokemones/share/:id" element={<Pokecomparte />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -40,7 +40,7 @@ export default function Pokecard({ text, pokeinfo }) {
             />
           </div>
           <div className="name-card" style={{ backgroundColor: `black` }}>
-            {"Agregar"}
+            {"Add"}
           </div>
         </Link>
       </div>
@@ -56,7 +56,7 @@ export default function Pokecard({ text, pokeinfo }) {
                   borderRadius: "10px 10px 0 0",
                 }}
               >
-                {pokemon.pokemon_id}
+                {pokemon.id}
               </div>
               <div
                 className="img-card-container"

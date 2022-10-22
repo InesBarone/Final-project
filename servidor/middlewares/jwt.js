@@ -16,6 +16,7 @@ exports.validateJWT = (req, res, next) => {
     var ahora = new Date();
     var tokenfecha = new Date(tiempo * 1000);
     var dif = (ahora.getTime() - tokenfecha.getTime()) / 1000;
+    req.user_id = decoded.id;
 
     if (dif > 3000) {
       res.status(401).json({ msg: "token expirado" });

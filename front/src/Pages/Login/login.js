@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from "../../Components/Button/button";
 import "./login.css";
 
 function Login({ i }) {
@@ -19,7 +20,7 @@ function Login({ i }) {
         mail: mail,
         password: password,
       }),
-    })
+    })     
       .then((r) => {
         return r.json();
       })
@@ -27,6 +28,9 @@ function Login({ i }) {
         if (responseJSON.success) {
           localStorage.setItem("auth-token", responseJSON.auth_token);
           navigate("/principal");
+        }
+        else {
+          navigate("/error400");
         }
       })
       .catch((err) => {
@@ -37,7 +41,6 @@ function Login({ i }) {
   return (
     <div className="container-login">
       <div className="login-box">
-        <img className="avatar" src="/Images/ball.png" alt="pokeball" />
         <h1>Login here</h1>
         <form>
           <label for="email">Mail</label>
@@ -58,18 +61,22 @@ function Login({ i }) {
             }}
           ></input>
 
+
           <input
+            text="Log In"
             type="submit"
-            value="Log In"
+            value="Login"
             onClick={(e) => {
               e.preventDefault();
               loguearse(mail, password);
             }}
-          ></input>
-          <p>If you dont have a user please create an account.</p>
-          <Link to="/register">
-            <button>REGISTER</button>
-          </Link>
+          />
+          <p>¡If you dont have a user please create an account!</p>
+          <div className="register-button">
+            <Link to="/register">
+              <Button text="REGISTER" />
+            </Link>
+          </div>
         </form>
       </div>
     </div>

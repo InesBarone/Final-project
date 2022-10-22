@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
+import Button from "../../Components/Button/button";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [mail, setMail] = useState("");
@@ -39,32 +41,30 @@ export default function Register() {
       });
   };
   return (
-    <div>
-      {mail}
-      {password}
+    <div className="General">
       <form action="" class="register">
         <h1 class="register__titulo">POKE-REGISTER</h1>
-        <p>Welcome to your Pokedex. Please register a new user</p>
+        <p>Welcome to your Pokedex. </p>
+        <p>Please register a new user</p>
+
         <input
+          placeholder="Enter e-mail"
           type="mail"
           class="register__input"
           onChange={(e) => {
             setMail(e.target.value);
           }}
         />
-        <label for="" class="register__label">
-          Mail
-        </label>
+
         <input
+          placeholder="Enter password"
           type="password"
           class="register__input"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
         />
-        <label for="" class="register__label">
-          Password
-        </label>
+     
         <input
           type="button"
           value="Send"
@@ -73,6 +73,12 @@ export default function Register() {
             handleRegister(mail, password);
           }}
         ></input>
+         ¡
+        <div className="ButtonRegister">
+          <Link to={"/"}>
+            <Button text={"back login"} />
+          </Link>
+        </div>
       </form>
     </div>
   );

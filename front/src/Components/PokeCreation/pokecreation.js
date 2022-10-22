@@ -25,7 +25,7 @@ export default function Pokecreation() {
                 </div>
                 <div className="name-card"
                     style={{ backgroundColor:`black`}}>
-                    <p>Agregar Pokemon</p>
+                    <p>Add Pokemon</p>
                 </div>
                 </Link>
             </div>

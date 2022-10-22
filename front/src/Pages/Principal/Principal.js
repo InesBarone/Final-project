@@ -2,8 +2,8 @@ import React from "react";
 import Pokecard from "../../Components/Pokecard/Pokecard";
 import "./Principal.css";
 import { useState, useEffect } from "react";
-import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
 import { Link } from "react-router-dom";
+import Button from "../../Components/Button/button";
 
 export default function Principal() {
   const [pokeinfo, setPokeinfo] = useState([]);
@@ -23,6 +23,10 @@ export default function Principal() {
       })
       .then(function (responseJSON) {
         setPokeinfo(responseJSON);
+        setPokeinfo((previousState) => {
+          let array = [...previousState];
+          return array.sort((a, b) => b.poke_number - a.poke_number);
+        });
       })
       .catch((err) => console.log(err));
   }, [i]);
@@ -104,16 +108,35 @@ export default function Principal() {
               alt="Logo pokebola"
             />
             <h1>Pokedex</h1>
-            <Link to="/"> 
-            <button className="back-to-login" onClick={deslogeo}>Cerrar sesión</button>
-            </Link>
           </div>
           {order ? (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <button className="arrow-button" onClick={manageSortId}>
-                <div>
-                  <p style={{ fontSize: "10px", marginRight: "3px" }}>A</p>
-                  <p style={{ fontSize: "10px", marginRight: "3px" }}>Z</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "10px",
+                      marginRight: "3px",
+                      paddingBottom: "0px",
+                    }}
+                  >
+                    A
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "10px",
+                      marginRight: "3px",
+                      paddingBottom: "0px",
+                    }}
+                  >
+                    Z
+                  </p>
                 </div>
               </button>
               <button className="arrow-button" onClick={reversePokeInfo}>
@@ -121,7 +144,7 @@ export default function Principal() {
               </button>
             </div>
           ) : (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <button className="arrow-button" onClick={manageSortName}>
                 <p>#</p>
               </button>
@@ -132,15 +155,31 @@ export default function Principal() {
           )}
         </div>
         <input
+          style={{
+            color: "black",
+            fontSize: "15px",
+            width: "50%",
+            height: "30px",
+            margin: " auto ",
+            borderRadius: "20px",
+            textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+          }}
           type="search"
-          placeholder="🔎 Buscar"
-          className="search-bar"
+          placeholder="🔎 Search Pokemon"
+          className="formulario__input"
           onChange={manejarInput}
         />
       </header>
       <main>
         <Pokecard text={text} pokeinfo={pokeinfo} />
       </main>
+      <div className="button1">
+        <Link to="/">
+          <Button text="Log Out" onclick={deslogeo} />
+        </Link>
+      </div>
     </div>
   );
 }
