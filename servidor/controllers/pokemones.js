@@ -46,12 +46,12 @@ exports.onePokemon = function (req, res, next) {
         "' = rel.pokemon_id ;"
     )
     .then((resultado) => {
-      if(resultado.rows.length > 0){
-          res.status(200).json(resultado.rows);
-      next();
-      } else{
-         res.status(401).json({err: "Pokemon no existe"});
-      next();
+      if (resultado.rows.length > 0) {
+        res.status(200).json(resultado.rows);
+        next();
+      } else {
+        res.status(401).json({ err: "Pokemon no existe" });
+        next();
       }
     })
     .catch((err) => {

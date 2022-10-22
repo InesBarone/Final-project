@@ -2,7 +2,6 @@ import React from "react";
 import Pokecard from "../../Components/Pokecard/Pokecard";
 import "./Principal.css";
 import { useState, useEffect } from "react";
-import { Pokeinfo } from "../../Components/Pokeinfo/Pokeinfo";
 import { Link } from "react-router-dom";
 import Button from "../../Components/Button/button";
 
@@ -24,6 +23,10 @@ export default function Principal() {
       })
       .then(function (responseJSON) {
         setPokeinfo(responseJSON);
+        setPokeinfo((previousState) => {
+          let array = [...previousState];
+          return array.sort((a, b) => b.poke_number - a.poke_number);
+        });
       })
       .catch((err) => console.log(err));
   }, [i]);
@@ -96,7 +99,6 @@ export default function Principal() {
 
   return (
     <div className="Principal-container">
-    
       <header>
         <div className="header-1">
           <div className="logo-title">
@@ -108,11 +110,33 @@ export default function Principal() {
             <h1>Pokedex</h1>
           </div>
           {order ? (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <button className="arrow-button" onClick={manageSortId}>
-                <div>
-                  <p style={{ fontSize: "10px", marginRight: "3px" }}>A</p>
-                  <p style={{ fontSize: "10px", marginRight: "3px" }}>Z</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: "10px",
+                      marginRight: "3px",
+                      paddingBottom: "0px",
+                    }}
+                  >
+                    A
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "10px",
+                      marginRight: "3px",
+                      paddingBottom: "0px",
+                    }}
+                  >
+                    Z
+                  </p>
                 </div>
               </button>
               <button className="arrow-button" onClick={reversePokeInfo}>
@@ -120,7 +144,7 @@ export default function Principal() {
               </button>
             </div>
           ) : (
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <button className="arrow-button" onClick={manageSortName}>
                 <p>#</p>
               </button>

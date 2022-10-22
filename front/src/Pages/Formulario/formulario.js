@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./formulario.css";
 
 export default function Formulario() {
@@ -64,6 +65,13 @@ export default function Formulario() {
   return (
     <div className="General3">
       <form action="" className="formulario">
+      <Link to="/principal">
+              <img
+                src="/Images/arrow-left-w.svg"
+                className="arrow-left"
+                alt="Arrow left"
+              />
+            </Link>
         <h1 className="formulario__titulo">Agregar Pokemon</h1>
 
         <input
