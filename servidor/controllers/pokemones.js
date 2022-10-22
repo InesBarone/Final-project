@@ -73,6 +73,7 @@ exports.createPokemon = function (req, res, next) {
         id = `#${number}`;
       }
 
+      console.log(req.body.type_1);
       const name = req.body.name;
       const img = req.body.img;
       const weight = req.body.weight;
@@ -96,7 +97,7 @@ exports.createPokemon = function (req, res, next) {
         hp.pength < 1 ||
         atk.length < 1 ||
         def.length < 1 ||
-        satklength < 1 ||
+        satk.length < 1 ||
         sdef.length < 1 ||
         spd.length < 1 ||
         type_1.length < 1 ||

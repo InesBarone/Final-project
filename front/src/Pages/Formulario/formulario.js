@@ -22,6 +22,7 @@ export default function Formulario() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "auth-token": localStorage.getItem("auth-token"),
       },
       body: JSON.stringify({
         name: newName,
@@ -149,10 +150,13 @@ export default function Formulario() {
           className="formulario__input"
           onChange={(e) => setnewMoves(e.target.value)}
         />
-         <h3 className="H3Type">POKEMON TYPE</h3>
+        <h3 className="H3Type">POKEMON TYPE</h3>
 
         <form className="type_form">
-           <select className="Selectformulario" onChange={(e) => setnewType(e.target.value)}>
+          <select
+            className="Selectformulario"
+            onChange={(e) => setnewType(e.target.value)}
+          >
             <option disabled>Select Pokemon type</option>
             <option value="2">Poison</option>
             <option value="12">Electric</option>
