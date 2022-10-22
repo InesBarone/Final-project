@@ -116,53 +116,6 @@ export default function Pokebio() {
   }
 
   return (
-<<<<<<< HEAD
-    <div className="container-pokecomparte">
-      <div className="Pokecomparte-container" style={background}>
-        <div className="header-pokecomparte">
-          <div className="name-pokecomparte-container">
-            <h1 className="name-pokecomparte">{pokemon.name}</h1>
-          </div>
-          <div className="id">{pokemon.id}</div>
-        </div>
-        <div className="main-container">
-          <img
-            src="/Images/Pokeball (1).png"
-            className="img-pokebola-pokecomparte"
-            alt="img-pokebola"
-          />
-          <div className="poke-stats-pokecomparte">
-            <Pokestats pokeinfo2={pokemon} aboutColor={aboutColor} />
-            <div className="share-container">
-              <Button text="Share" onclick={handleSharePokemon} />
-              <input
-                type="text"
-                value={link}
-                className="link-input"
-                style={{ display: `${display}` }}
-                readonly
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="pokePhoto-container-pokecomparte">
-        <Link to={`/pokemon/${changePokemonLeft()}`}>
-          <button className="arrow-button2">{"<"}</button>
-        </Link>
-        <img
-          src={pokemon.img}
-          alt="pokepicture"
-          className="pokePhoto-pokecomparte"
-        />
-        <Link to={`/pokemon/${changePokemonRight()}`}>
-          <button className="arrow-button2" style={{ color: `` }}>
-            {">"}
-          </button>
-        </Link>
-      </div>
-    </div>
-=======
         <div className="container-pokecomparte">
           <div className="Pokecomparte-container" style={background}>
             <div className="header-pokecomparte">
@@ -209,6 +162,5 @@ export default function Pokebio() {
             </Link>
           </div>
         </div>
->>>>>>> 6efc27a3973568a8701845626f2b8537db82840f
   );
 }
